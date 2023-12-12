@@ -1,0 +1,81 @@
+import React from "react";
+import styled  from "styled-components";
+import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
+
+const ProjectCard = ({ title, description, img, gitUrl, previewUrl }) => {
+  return (
+    <Section>
+      <ImgContainer
+        className="group"
+      >
+        <img src={img}/>
+        <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
+          <a
+            href={gitUrl} 
+            target="_blank"
+            className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
+          >
+            <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
+          </a>
+          <a
+            href={previewUrl}
+            target="_blank"
+            className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
+          >
+            <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
+          </a>
+        </div>
+      </ImgContainer>
+      <Box >
+        <h5 className="text-xl font-semibold mb-2">{title}</h5>
+        <br/>
+        <p className="text-[#ADB7BE]">{description}</p>
+      </Box>
+    </Section>
+  );
+};
+const Section = styled.section`
+  width: 100%;
+  background-color: ${(props) => props.theme.text};
+  position: relative;
+  color: ${(props) => props.theme.body};
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const Box = styled.div`
+  width: 100%;
+  margin: 2rem auto;
+  align-self: center;
+  padding: 4%;
+  @media (max-width: 64em) {
+    width: 80%;
+  }
+  @media (max-width: 48em) {
+    width: 90%;
+    flex-direction: column;
+
+    & > *:last-child {
+      & > *:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+`;
+const ImgContainer = styled.div`
+  margin: 0 1rem;
+  background-color: ${(props) => props.theme.body};
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+
+`;
+
+const Img = styled.img`
+width: auto;
+height: auto;
+`;
+export default ProjectCard;
