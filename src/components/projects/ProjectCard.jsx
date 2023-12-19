@@ -2,7 +2,7 @@ import React from "react";
 import styled  from "styled-components";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 
-const ProjectCard = ({ title, description, img, gitUrl, previewUrl }) => {
+const ProjectCard = ({ title, description,tag, img, gitUrl, previewUrl }) => {
   return (
     <Section>
       <ImgContainer
@@ -28,8 +28,10 @@ const ProjectCard = ({ title, description, img, gitUrl, previewUrl }) => {
       </ImgContainer>
       <Box >
         <h5 className="text-xl font-semibold mb-2">{title}</h5>
+        <p className="text-[#ADB7BE] text-sm">Tag: {tag}</p>
+        {/*
         <br/>
-        <p className="text-[#ADB7BE]">{description}</p>
+         <p className="text-[#ADB7BE] text-md">Project Description: {description}</p> */}
       </Box>
     </Section>
   );

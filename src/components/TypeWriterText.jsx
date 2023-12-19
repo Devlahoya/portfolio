@@ -15,10 +15,10 @@ export default function TypeWriterText() {
           onInit={(typewriter) => {
             typewriter
               .pauseFor(200)
-              .typeString(`<span class="text-1">Engineer</span>`)
+              .typeString(`<span class="text-1">Developer</span>`)
               .pauseFor(1500)
               .deleteAll()
-              .typeString(`<span class="text-2">Developer</span>`)
+              .typeString(`<span class="text-2">Engineer</span>`)
               .pauseFor(1500)
               .deleteAll()
               .typeString(`<span class="text-3">Manager</span>`)

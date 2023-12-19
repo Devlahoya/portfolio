@@ -19,16 +19,16 @@ export function Footer() {
         <Left>
           <Logo />
           <IconList>
-            <a href="#" target="_blank">
+            <a href="https://www.facebook.com/HectorMtzDeLaHoya" target="_blank">
             <IonIcon icon={logoFacebook} color="light"></IonIcon>
             </a>
-            <a href="#" target="_blank">
+            <a href="https://www.instagram.com/delahoyagg/" target="_blank">
             <IonIcon icon={logoInstagram} color="light"></IonIcon>
             </a>
             <a href="#" target="_blank">
             <IonIcon icon={logoTwitter} color="light"></IonIcon>
             </a>
-            <a href="#" target="_blank">
+            <a href="https://www.linkedin.com/in/devlahoya/" target="_blank">
             <IonIcon icon={logoLinkedin} color="light"></IonIcon>
             </a>
           </IconList>

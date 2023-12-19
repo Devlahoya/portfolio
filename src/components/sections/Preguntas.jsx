@@ -23,8 +23,8 @@ export function Preguntas() {
           <br/>
           <P>I also like everything related to PC Gaming and the assembly of computer equipment. </P>
           </Accordion>
-          <Accordion title="I am willing to change my place of residence?">
-          <P>Sure, I love to see new places and learn more about the culture of the people of any place I go to. </P>
+          <Accordion title="Am I open to travel or change my place of residence?">
+          <P>You betcha! I'm ready to venture to new galaxies, boldly going where no one has gone before. Whether it's the scenic landscapes of Middle-earth or a galaxy far, far away, count me in for an epic journey. </P>
           </Accordion>
           <Accordion title="Is this question a placeholder?">
           <P>Yes, it is </P>

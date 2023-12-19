@@ -25,10 +25,10 @@ export function Roadmap() {
           <DrawSvg />
         </SvgContainer>
         <Items>
-          <RoadMapItem subtitle="CBTis #130" subtext="Programming Technician 2012-2015"/>
-          <RoadMapItem subtitle="Instituto Tecnologico de Durango" subtext="B.S Biochemical Engineering 2015-2020"/>
-          <RoadMapItem subtitle="Magdalena's Construction Company" subtext="Administrative Manager 2015-2022"/>
-          <RoadMapItem subtitle="QACS" subtext="Chief Financial Officer | WordPress Specialist | Jr Dev 2022-Present "/>
+          <RoadMapItem subtitle="CBTis #130" subtext="Programming Technician <2012-2015>"/>
+          <RoadMapItem subtitle="Instituto Tecnologico de Durango" subtext="B.S Biochemical Engineering <2015-2020>"/>
+          <RoadMapItem subtitle="Magdalena's Construction Company" subtext="Administrative Manager <2015-2022>"/>
+          <RoadMapItem subtitle="QACS" subtext="Project Manager | Customer Relationships Specialist | WordPress Specialist <2022-Present> "/>
           <RoadMapItem subtitle="Cybertech, Multiverso and Anima" subtext="Owner"/>
         </Items>
       </Container>

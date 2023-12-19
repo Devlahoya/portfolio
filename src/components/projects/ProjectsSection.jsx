@@ -44,8 +44,8 @@ const ProjectsSection = () => {
         <ProjectTag
           key="3"
           onClick={handleTagChange}
-          name="Vainilla JS"
-          isSelected={tag === "Vainilla JS"}
+          name="JS"
+          isSelected={tag === "JS"}
         />        
         <ProjectTag
           key="4"
@@ -63,11 +63,12 @@ const ProjectsSection = () => {
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.15, delay: index * 0.4 }}
           >
             <ProjectCard
               key={project.id}
               title={project.title}
+              tag={project.tag[1]}              
               description={project.description}
               img={project.image}
               gitUrl={project.gitUrl}

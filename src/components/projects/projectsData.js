@@ -11,6 +11,23 @@ import memorygame from "../../assets/projects/react/memorygame.png";
 import nftpage from "../../assets/projects/react/nftpage.png";
 import pokedex from "../../assets/projects/react/pokedex.png";
 
+import barbie from "../../assets/projects/js/barbie.png"
+import calculator from "../../assets/projects/js/calculator.png"
+import dragonp from "../../assets/projects/js/dragonp.png"
+import halloween from "../../assets/projects/js/halloween.png"
+import keyboard from "../../assets/projects/js/keyboard.png"
+import login from "../../assets/projects/js/login.png"
+import menu1 from "../../assets/projects/js/menu1.png"
+import mousebear from "../../assets/projects/js/mousebear.png"
+import parallax from "../../assets/projects/js/parallax.png"
+import pino from "../../assets/projects/js/pino.png"
+import pokedexjs from "../../assets/projects/js/pokedex.png"
+import pricec from "../../assets/projects/js/pricec.png"
+import sidebar from "../../assets/projects/js/sidebar.png"
+import slidervideo from "../../assets/projects/js/slidervideo.png"
+import cybertech from "../../assets/projects/cybertech.png"
+import anima from "../../assets/projects/anima.png"
+
 const projectsData = [
     {
       id: 1,
@@ -19,7 +36,7 @@ const projectsData = [
       image: `${adminclientscrm}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/adminclientes-crm",
-      previewUrl: "http://www.google.com",
+      previewUrl: "https://leafy-trifle-a3e9c3.netlify.app/",
     },
     {
       id: 2,
@@ -28,16 +45,7 @@ const projectsData = [
       image: `${appclima}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/app-clima",
-      previewUrl: "/",
-    },
-    {
-      id: 3,
-      title: "News App",
-      description: "Project 1 description",
-      image: `${appnoticias}`,
-      tag: ["All", "React"],
-      gitUrl: "https://github.com/Devlahoya/app-noticias",
-      previewUrl: "/",
+      previewUrl: "https://app-clima-devlahoya.netlify.app/",
     },
     {
       id: 4,
@@ -46,7 +54,7 @@ const projectsData = [
       image: `${buscadorbebidas}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/buscador-bebidas",
-      previewUrl: "/",
+      previewUrl: "https://bebidas-devlahoya.netlify.app"
     },
     {
       id: 5,
@@ -55,7 +63,7 @@ const projectsData = [
       image: `${citasveterinario}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/citas-veterinario",
-      previewUrl: "/",
+      previewUrl: "https://vet-devlahoya.netlify.app",
     },
     {
       id: 6,
@@ -64,7 +72,7 @@ const projectsData = [
       image: `${controlgastos}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/control-gastos",
-      previewUrl: "/",
+      previewUrl: "https://budget-control-devlahoya.netlify.app",
     },
     {
       id: 7,
@@ -73,7 +81,7 @@ const projectsData = [
       image: `${cotizadorcriptomonedas}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/cotizador-criptomonedas",
-      previewUrl: "/",
+      previewUrl: "https://crypto-devlahoya.netlify.app",
     },
     {
       id: 8,
@@ -82,7 +90,7 @@ const projectsData = [
       image: `${cotizadorseguros}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/cotizador-auto",
-      previewUrl: "/",
+      previewUrl: "https://insurance-devlahoya.netlify.app",
     },
     {
       id: 9,
@@ -91,7 +99,7 @@ const projectsData = [
       image: `${devjobs}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/dev-jobs",
-      previewUrl: "/",
+      previewUrl: "https://devjobs-devlahoya.netlify.app",
     },
     {
       id: 10,
@@ -100,7 +108,7 @@ const projectsData = [
       image: `${memorygame}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/memory-game",
-      previewUrl: "/",
+      previewUrl: "https://memory-game-devlahoya.netlify.app",
     },
     {
       id: 11,
@@ -109,7 +117,7 @@ const projectsData = [
       image: `${nftpage}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/nft-page",
-      previewUrl: "/",
+      previewUrl: "https://nft-devlahoya.netlify.app",
     },
     {
       id: 12,
@@ -118,7 +126,157 @@ const projectsData = [
       image: `${pokedex}`,
       tag: ["All", "React"],
       gitUrl: "https://github.com/Devlahoya/pokedex",
-      previewUrl: "/",
+      previewUrl: "https://pokedex-devlahoya.netlify.app",
+    },
+
+    //JAVASCRIPT
+
+    {
+      id: 13,
+      title: "Barbie JS Website",
+      description: "Client Admin",
+      image: `${barbie}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Barbie-JS",
+      previewUrl: "https://barbie-devlahoya.netlify.app",
+    },
+    {
+      id: 14,
+      title: "Calculator JS APP",
+      description: "Client Admin",
+      image: `${calculator}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Calculator",
+      previewUrl: "https://calculator-devlahoya.netlify.app",
+    },
+    {
+      id: 15,
+      title: "Parallax Effect",
+      description: "Client Admin",
+      image: `${dragonp}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Dragon-Parallax",
+      previewUrl: "https://dragonparallax-devlahoya.netlify.app",
+    },
+    {
+      id: 16,
+      title: "Halloween website",
+      description: "Client Admin",
+      image: `${halloween}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Halloween-Page",
+      previewUrl: "https://halloween-devlahoya.netlify.app",
+    },
+    {
+      id: 17,
+      title: "Keyboard",
+      description: "Client Admin",
+      image: `${keyboard}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Keyboard",
+      previewUrl: "https://keyboard-devlahoya.netlify.app",
+    },
+    {
+      id: 18,
+      title: "Login page",
+      description: "Client Admin",
+      image: `${login}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Login-translate",
+      previewUrl: "https://login-devlahoya.netlify.app",
+    },
+    {
+      id: 19,
+      title: "Menu",
+      description: "Client Admin",
+      image: `${menu1}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Menu1-js",
+      previewUrl: "https://basic-menu-delahoya.netlify.app",
+    },
+    {
+      id: 20,
+      title: "Mouse Follow Bear",
+      description: "Client Admin",
+      image: `${mousebear}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Bear-Mouse-Follow-JS",
+      previewUrl: "https://mousefollow-devlahoya.netlify.app",
+    },
+    {
+      id: 21,
+      title: "Parallax",
+      description: "Client Admin",
+      image: `${parallax}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Parallax-effect-JS",
+      previewUrl: "https://parallax-devlahoya.netlify.app",
+    },
+    {
+      id: 22,
+      title: "Pinocchio parallax",
+      description: "Client Admin",
+      image: `${pino}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Pino-parallax-js",
+      previewUrl: "https://pinocchio-devlahoya.netlify.app",
+    },
+    {
+      id: 23,
+      title: "Pokedex JS",
+      description: "Client Admin",
+      image: `${pokedexjs}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Pokedex-js",
+      previewUrl: "https://pokedex-js-devlahoya.netlify.app",
+    },
+    {
+      id: 24,
+      title: "Pricing",
+      description: "Client Admin",
+      image: `${pricec}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Price-Cards-JS",
+      previewUrl: "https://pricing-devlahoya.netlify.app",
+    },
+    {
+      id: 25,
+      title: "SideBar JS",
+      description: "Client Admin",
+      image: `${sidebar}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Sidebar-JS",
+      previewUrl: "https://sidebar-devlahoya.netlify.app",
+    },
+    {
+      id: 26,
+      title: "Slider Video",
+      description: "Client Admin",
+      image: `${slidervideo}`,
+      tag: ["All", "JS"],
+      gitUrl: "https://github.com/Devlahoya/Slider-video-JS",
+      previewUrl: "https://slidervideo-devlahoya.netlify.app",
+    },
+
+    //Wordpress
+
+    {
+      id: 27,
+      title: "CyberTech Site",
+      description: "Client Admin",
+      image: `${cybertech}`,
+      tag: ["All", "WordPress"],
+      gitUrl: "",
+      previewUrl: "https://slidervideo-devlahoya.netlify.app",
+    },
+    {
+      id: 28,
+      title: "Anima Store",
+      description: "Client Admin",
+      image: `${anima}`,
+      tag: ["All", "WordPress"],
+      gitUrl: "",
+      previewUrl: "https://slidervideo-devlahoya.netlify.app",
     },
   ];
   

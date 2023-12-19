@@ -33,7 +33,7 @@ const TAB_DATA = [
         <li>React</li>
         <li>WordPress</li>
         <li>PostgreSQL</li>
-        <li>AI & Deep Learning with Python</li>
+        <li>AI & Deep Learning</li>
         <li>Testing</li>
       </ul>
     ),
@@ -43,7 +43,7 @@ const TAB_DATA = [
     id: "certifications",
     content: (
       <ul className="list-none pl-2">
-        <li>AWS Cloud Practitioner</li>
+        <li>EF SET CERTIFICATE C2 ENGLISH LEVEL <a href="https://www.efset.org/cert/AYaExw" target="_blank" className="text-blue-600"> (Link)</a></li> 
         <li>Google Professional Cloud Developer</li>
       </ul>
     ),
