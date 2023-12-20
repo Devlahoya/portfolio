@@ -8,8 +8,18 @@ import Carousel from './../Carousel2';
 //const  Carousel  = lazy(() => import("../Carousel"));
 
 
+
+
 export function MoreAbout() {
 
+  const scrollTo = (id) => {
+    let element = document.getElementById(id);
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+  };
   return (
     <>    
     <Title>
@@ -38,9 +48,9 @@ export function MoreAbout() {
           <br/>
           This portfolio is not just a sample of my work; it's an invitation to explore my digital universe and discover how my passion for technology intertwines with my love for creativity and good food.
           </SubTextLight>
-          <ButtonContainer>
+          <ButtonContainer  onClick={() => scrollTo("contact")}>
             <ThemeProvider theme={Dark}>
-              <Button text="Unete a mi discord!" link="#"/> 
+              <Button text="Send me a message!"/> 
             </ThemeProvider>
           </ButtonContainer>
         </Box>

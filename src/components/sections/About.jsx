@@ -44,7 +44,6 @@ const TAB_DATA = [
     content: (
       <ul className="list-none pl-2">
         <li>EF SET CERTIFICATE C2 ENGLISH LEVEL <a href="https://www.efset.org/cert/AYaExw" target="_blank" className="text-blue-600"> (Link)</a></li> 
-        <li>Google Professional Cloud Developer</li>
       </ul>
     ),
   },
