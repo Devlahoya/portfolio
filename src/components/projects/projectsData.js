@@ -27,7 +27,7 @@ import sidebar from "../../assets/projects/js/sidebar.png"
 import slidervideo from "../../assets/projects/js/slidervideo.png"
 import cybertech from "../../assets/projects/cybertech.png"
 import cafe from "../../assets/projects/cafe.png"
-
+import federacion from "../../assets/projects/federacion.png"
 const projectsData = [
   //Wordpress
 
@@ -49,6 +49,16 @@ const projectsData = [
     gitUrl: "",
     previewUrl: "https://eliass30.sg-host.com/",
   },
+  
+  {
+    id: 3,
+    title: "FMOFM",
+    description: "Client Admin",
+    image: `${federacion}`,
+    tag: ["All", "WordPress"],
+    gitUrl: "",
+    previewUrl: "https://fmofm.org.mx/",
+    },
     {
       id: 27,
       title: "Wheater App",
