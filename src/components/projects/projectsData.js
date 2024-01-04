@@ -29,6 +29,26 @@ import cybertech from "../../assets/projects/cybertech.png"
 import cafe from "../../assets/projects/cafe.png"
 
 const projectsData = [
+  //Wordpress
+
+  {
+    id: 2,
+    title: "CyberTech Site",
+    description: "Client Admin",
+    image: `${cybertech}`,
+    tag: ["All", "WordPress"],
+    gitUrl: "",
+    previewUrl: "https://slidervideo-devlahoya.netlify.app",
+  },
+  {
+    id: 1,
+    title: "Café del fisico",
+    description: "Client Admin",
+    image: `${cafe}`,
+    tag: ["All", "WordPress"],
+    gitUrl: "",
+    previewUrl: "https://eliass30.sg-host.com/",
+  },
     {
       id: 27,
       title: "Wheater App",
@@ -249,26 +269,7 @@ const projectsData = [
       previewUrl: "https://slidervideo-devlahoya.netlify.app",
     },
 
-    //Wordpress
-
-    {
-      id: 2,
-      title: "CyberTech Site",
-      description: "Client Admin",
-      image: `${cybertech}`,
-      tag: ["All", "WordPress"],
-      gitUrl: "",
-      previewUrl: "https://slidervideo-devlahoya.netlify.app",
-    },
-    {
-      id: 1,
-      title: "Café del fisico",
-      description: "Client Admin",
-      image: `${cafe}`,
-      tag: ["All", "WordPress"],
-      gitUrl: "",
-      previewUrl: "https://eliass30.sg-host.com/",
-    },
+    
   ];
   
   export default projectsData;
