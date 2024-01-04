@@ -56,10 +56,10 @@ const ProjectsSection = () => {
       </Container>
       
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project, index) => (
+        {filteredProjects.map((project, id) => (
           <motion.li
           
-            key={index}
+            key={id}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
