@@ -37,7 +37,7 @@ const ProjectCard = ({ title, description,tag, img, gitUrl, previewUrl }) => {
   );
 };
 const Section = styled.section`
-  width: 80%;
+  width: 90%;
   margin: auto;
   background-color: ${(props) => props.theme.text};
   position: relative;
