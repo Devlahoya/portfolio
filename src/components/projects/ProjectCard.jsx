@@ -8,7 +8,7 @@ const ProjectCard = ({ title, description,tag, img, gitUrl, previewUrl }) => {
       <ImgContainer
         className="group"
       >
-        <img src={img}/>
+        <img src={img} width="700" height="343"/>
         <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
           <a
             href={gitUrl} 
@@ -68,6 +68,8 @@ const Box = styled.div`
   }
 `;
 const ImgContainer = styled.div`
+  width: 700px;
+  height: 343px;
   margin: 0 1rem;
   background-color: ${(props) => props.theme.body};
   border-radius: 20px;
