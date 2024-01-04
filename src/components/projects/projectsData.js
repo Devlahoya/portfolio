@@ -26,20 +26,11 @@ import pricec from "../../assets/projects/js/pricec.png"
 import sidebar from "../../assets/projects/js/sidebar.png"
 import slidervideo from "../../assets/projects/js/slidervideo.png"
 import cybertech from "../../assets/projects/cybertech.png"
-import anima from "../../assets/projects/anima.png"
+import cafe from "../../assets/projects/cafe.png"
 
 const projectsData = [
     {
-      id: 1,
-      title: "Test",
-      description: "Client Admin",
-      image: `${adminclientscrm}`,
-      tag: ["All", "React"],
-      gitUrl: "https://github.com/Devlahoya/adminclientes-crm",
-      previewUrl: "https://leafy-trifle-a3e9c3.netlify.app/",
-    },
-    {
-      id: 2,
+      id: 27,
       title: "Wheater App",
       description: "Project 1 description",
       image: `${appclima}`,
@@ -261,7 +252,7 @@ const projectsData = [
     //Wordpress
 
     {
-      id: 27,
+      id: 2,
       title: "CyberTech Site",
       description: "Client Admin",
       image: `${cybertech}`,
@@ -270,13 +261,13 @@ const projectsData = [
       previewUrl: "https://slidervideo-devlahoya.netlify.app",
     },
     {
-      id: 28,
-      title: "Anima Store",
+      id: 1,
+      title: "Café del fisico",
       description: "Client Admin",
-      image: `${anima}`,
+      image: `${cafe}`,
       tag: ["All", "WordPress"],
       gitUrl: "",
-      previewUrl: "https://slidervideo-devlahoya.netlify.app",
+      previewUrl: "https://eliass30.sg-host.com/",
     },
   ];
   
