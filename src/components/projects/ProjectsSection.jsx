@@ -83,7 +83,7 @@ const ProjectsSection = () => {
 };
 
 const Section = styled.section`
-
+  width: 100%;
   background-color: ${(props) => props.theme.text};
   position: relative;
   color: ${(props) => props.theme.body};
