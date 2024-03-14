@@ -27,7 +27,7 @@ export default function TypeWriterText() {
               .typeString(`<span class="text-4">Entrepreneur</span>`)
               .pauseFor(1500)
               .deleteAll()
-              .typeString(`<span class="text-5">Human?🤖</span>`)
+              .typeString(`<span class="text-5">Tester 🤖</span>`)
               .pauseFor(1500)
               .deleteAll()
               .start();              
