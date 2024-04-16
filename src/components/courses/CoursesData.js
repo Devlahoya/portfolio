@@ -1,3 +1,4 @@
+import efset from "../../assets/certificates/efset.png"
 import carrerag6one from "../../assets/certificates/carrerag6one.png"
 import dpg6one from "../../assets/certificates/dpg6one.png"
 import empg6one from "../../assets/certificates/empg6one.png"
@@ -17,7 +18,7 @@ const CoursesData = [
     id: 15,
     title: "EFSET- C2 English Certification",
     description: "Client Admin",
-    image: `${dpg6one}`,
+    image: `${efset}`,
     tag: ["All", "QA"],
     gitUrl: "https://cert.efset.org/AYaExw",
     previewUrl: "https://cert.efset.org/AYaExw",
