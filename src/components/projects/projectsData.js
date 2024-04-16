@@ -38,7 +38,7 @@ const projectsData = [
     description: "Client Admin",
     image: `${cafe}`,
     tag: ["All", "WordPress"],
-    gitUrl: "",
+    gitUrl: "https://cafedelfisico.com/",
     previewUrl: "https://cafedelfisico.com/",
   },
   
@@ -48,7 +48,7 @@ const projectsData = [
     description: "Client Admin",
     image: `${federacion}`,
     tag: ["All", "WordPress"],
-    gitUrl: "",
+    gitUrl: "https://fmofm.org.mx/",
     previewUrl: "https://fmofm.org.mx/",
     },
     {
