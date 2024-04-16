@@ -31,15 +31,7 @@ import federacion from "../../assets/projects/federacion.png"
 const projectsData = [
   //Wordpress
 
-  {
-    id: 2,
-    title: "CyberTech Site",
-    description: "Client Admin",
-    image: `${cybertech}`,
-    tag: ["All", "WordPress"],
-    gitUrl: "",
-    previewUrl: "https://slidervideo-devlahoya.netlify.app",
-  },
+
   {
     id: 1,
     title: "Café del fisico",
@@ -47,7 +39,7 @@ const projectsData = [
     image: `${cafe}`,
     tag: ["All", "WordPress"],
     gitUrl: "",
-    previewUrl: "https://eliass30.sg-host.com/",
+    previewUrl: "https://cafedelfisico.com/",
   },
   
   {

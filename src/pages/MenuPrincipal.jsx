@@ -12,6 +12,7 @@ import { ScrollToTop } from "../components/ScrollToTop";
 import EmailSection from "../components/sections/EmailSection";
 import {Banner} from "../components/Banner"
 import ProjectsSection from "../components/projects/ProjectsSection";
+import CoursesSection from '../components/courses/CoursesSection';
 
 export function MenuPrincipal() {
   return (
@@ -23,6 +24,7 @@ export function MenuPrincipal() {
         <About/>
         <Roadmap/>
         <ProjectsSection/>
+        <CoursesSection/>
         <Showcase/>
         <Preguntas/>
         <Banner/>
