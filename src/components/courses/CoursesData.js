@@ -1,3 +1,9 @@
+import carrerag6one from "../../assets/certificates/carrerag6one.jpg"
+import dpg6one from "../../assets/certificates/dpg6one.jpg"
+import empg6one from "../../assets/certificates/empg6one.jpg"
+import javapoog6one from "../../assets/certificates/javapoog6one.jpg"
+import lpg6one from "../../assets/certificates/lpg6one.jpg"
+import princg6one from "../../assets/certificates/princg6one.jpg"
 import ai from "../../assets/certificates/AI.jpg"
 import javascriptintensivo from "../../assets/certificates/javascriptintensivo.jpg"
 import modernjs from "../../assets/certificates/modernjs.jpg"
@@ -7,6 +13,60 @@ import reactintensivo from "../../assets/certificates/reactintensivo.jpg"
 import selenium from "../../assets/certificates/selenium.jpg"
 import testingintro from "../../assets/certificates/testingintro.jpg"
 const CoursesData = [
+  {
+    id: 9,
+    title: "DESARROLLO PERSONAL G6 - ONE",
+    description: "Client Admin",
+    image: `${dpg6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://app.aluracursos.com/degree/certificate/e267a8b8-2c9d-4c71-9c74-0dafc529b5e2?lang",
+    previewUrl: "https://app.aluracursos.com/degree/certificate/e267a8b8-2c9d-4c71-9c74-0dafc529b5e2?lang",
+  },
+  {
+    id: 10,
+    title: "LÓGICA DE PROGRAMACIÓN CON JAVASCRIPT",
+    description: "Client Admin",
+    image: `${lpg6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://app.aluracursos.com/degree/certificate/ac334c6b-8bb4-45bb-abca-fb82c695f5e8?lang",
+    previewUrl: "https://app.aluracursos.com/degree/certificate/ac334c6b-8bb4-45bb-abca-fb82c695f5e8?lang",
+  },
+  {
+    id: 11,
+    title: "APRENDE A PROGRAMAR EN JAVA CON ORIENTACIÓN A OBJETOS",
+    description: "Client Admin",
+    image: `${javapoog6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://app.aluracursos.com/degree/certificate/bddad2c0-10db-4ec8-af53-153edf115499?lang",
+    previewUrl: "https://app.aluracursos.com/degree/certificate/bddad2c0-10db-4ec8-af53-153edf115499?lang",
+  },
+  {
+    id: 12,
+    title: "EMPRENDIMIENTO, AGILIDAD Y PROTAGONISMO PROFESIONAL G6 - ONE",
+    description: "Client Admin",
+    image: `${empg6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://app.aluracursos.com/degree/certificate/c37736a8-d45e-416e-9e89-4529b2dcef33?lang",
+    previewUrl: "https://app.aluracursos.com/degree/certificate/c37736a8-d45e-416e-9e89-4529b2dcef33?lang",
+  },
+  {
+    id: 13,
+    title: "MI CARRERA",
+    description: "Client Admin",
+    image: `${carrerag6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://app.aluracursos.com/degree/certificate/6e375808-e955-43df-b5fc-82bed59f8815?lang",
+    previewUrl: "https://app.aluracursos.com/degree/certificate/6e375808-e955-43df-b5fc-82bed59f8815?lang",
+  },
+  {
+    id: 14,
+    title: "PRINCIPIANTE EN PROGRAMACIÓN G6 - ONE",
+    description: "Client Admin",
+    image: `${princg6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://app.aluracursos.com/degree/certificate/9670b384-416c-42e9-9a35-d9ea794ddef3?lang",
+    previewUrl: "https://app.aluracursos.com/degree/certificate/9670b384-416c-42e9-9a35-d9ea794ddef3?lang",
+  },
   {
     id: 1,
     title: "Selenium con Java y Cucumber: El curso definitivo",
