@@ -14,6 +14,16 @@ import selenium from "../../assets/certificates/selenium.jpg"
 import testingintro from "../../assets/certificates/testingintro.jpg"
 const CoursesData = [
   {
+    id: 15,
+    title: "EFSET- C2 English Certification",
+    description: "Client Admin",
+    image: `${dpg6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://cert.efset.org/AYaExw",
+    previewUrl: "https://cert.efset.org/AYaExw",
+  },
+
+  {
     id: 9,
     title: "DESARROLLO PERSONAL G6 - ONE",
     description: "Client Admin",
