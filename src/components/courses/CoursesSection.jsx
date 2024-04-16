@@ -24,9 +24,9 @@ const CoursesSection = () => {
   };
 
   return (
-    <Section id="courses">
+    <Section id="certificates">
       <Title >
-        My Courses
+        My Certificates
       </Title>
       <Container >
         <CoursesTag
