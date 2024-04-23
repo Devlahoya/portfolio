@@ -25,13 +25,21 @@ import pokedexjs from "../../assets/projects/js/pokedex.png"
 import pricec from "../../assets/projects/js/pricec.png"
 import sidebar from "../../assets/projects/js/sidebar.png"
 import slidervideo from "../../assets/projects/js/slidervideo.png"
-import cybertech from "../../assets/projects/cybertech.png"
+import multiversostore from "../../assets/projects/multiversostore.png"
 import cafe from "../../assets/projects/cafe.png"
 import federacion from "../../assets/projects/federacion.png"
 const projectsData = [
   //Wordpress
 
-
+  {
+    id: 28,
+    title: "Multiverso Store (Under construction)",
+    description: "Client Admin",
+    image: `${multiversostore}`,
+    tag: ["All", "WordPress"],
+    gitUrl: "https://eliass34.sg-host.com/",
+    previewUrl: "https://eliass34.sg-host.com/",
+  },
   {
     id: 1,
     title: "Café del fisico",
