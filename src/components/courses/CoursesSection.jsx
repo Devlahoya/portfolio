@@ -50,6 +50,12 @@ const CoursesSection = () => {
         <CoursesTag
           key="4"
           onClick={handleTagChange}
+          name="Oracle-Alura"
+          isSelected={tag === "Oracle-Alura"}
+        />
+        <CoursesTag
+          key="5"
+          onClick={handleTagChange}
           name="Others"
           isSelected={tag === "Others"}
         />
