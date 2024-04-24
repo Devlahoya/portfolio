@@ -38,14 +38,14 @@ const CoursesSection = () => {
         <CoursesTag
           key="2"
           onClick={handleTagChange}
-          name="Programming"
-          isSelected={tag === "Programming"}
+          name="QA"
+          isSelected={tag === "QA"}
         />
         <CoursesTag
           key="3"
           onClick={handleTagChange}
-          name="QA"
-          isSelected={tag === "QA"}
+          name="Programming"
+          isSelected={tag === "Programming"}
         />        
         <CoursesTag
           key="4"
