@@ -2,6 +2,7 @@ import efset from "../../assets/certificates/efset.png"
 import carrerag6one from "../../assets/certificates/carrerag6one.png"
 import dpg6one from "../../assets/certificates/dpg6one.png"
 import empg6one from "../../assets/certificates/empg6one.png"
+import javag6one from "../../assets/certificates/javag6one.png"
 import javapoog6one from "../../assets/certificates/javapoog6one.png"
 import lpg6one from "../../assets/certificates/lpg6one.png"
 import princg6one from "../../assets/certificates/princg6one.png"
@@ -22,8 +23,17 @@ const CoursesData = [
     tag: ["All", "QA"],
     gitUrl: "https://cert.efset.org/AYaExw",
     previewUrl: "https://cert.efset.org/AYaExw",
+  },  
+  {
+    id: 16,
+    title: "JAVA ORIENTADO A OBJETOS G6 - ONE",
+    description: "Client Admin",
+    image: `${javag6one}`,
+    tag: ["All", "QA"],
+    gitUrl: "https://app.aluracursos.com/degree/certificate/38ea40fb-9585-4579-ad88-fe8c8f00e60e?lang",
+    previewUrl: "https://app.aluracursos.com/degree/certificate/38ea40fb-9585-4579-ad88-fe8c8f00e60e?lang",
   },
-
+  
   {
     id: 9,
     title: "DESARROLLO PERSONAL G6 - ONE",
