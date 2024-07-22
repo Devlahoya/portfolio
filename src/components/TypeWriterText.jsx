@@ -15,19 +15,16 @@ export default function TypeWriterText() {
           onInit={(typewriter) => {
             typewriter
               .pauseFor(200)
-              .typeString(`<span class="text-1">Developer</span>`)
+              .typeString(`<span class="text-1">Engineer</span>`)
               .pauseFor(1500)
               .deleteAll()
-              .typeString(`<span class="text-2">Engineer</span>`)
+              .typeString(`<span class="text-2">Developer</span>`)
               .pauseFor(1500)
               .deleteAll()
               .typeString(`<span class="text-3">Manager</span>`)
               .pauseFor(1500)
               .deleteAll()
-              .typeString(`<span class="text-4">Entrepreneur</span>`)
-              .pauseFor(1500)
-              .deleteAll()
-              .typeString(`<span class="text-5">Tester 🤖</span>`)
+              .typeString(`<span class="text-4">Human</span>`)
               .pauseFor(1500)
               .deleteAll()
               .start();              
