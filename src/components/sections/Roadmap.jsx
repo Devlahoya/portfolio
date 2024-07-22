@@ -28,8 +28,7 @@ export function Roadmap() {
           <RoadMapItem subtitle="CBTis #130" subtext="Programming Technician <2012-2015>"/>
           <RoadMapItem subtitle="Instituto Tecnologico de Durango" subtext="B.S Biochemical Engineering <2015-2020>"/>
           <RoadMapItem subtitle="Magdalena's Construction Company" subtext="Administrative Manager <2015-2022>"/>
-          <RoadMapItem subtitle="QACS" subtext="Project Manager | Customer Relationships Specialist | Jr. QA Tester <2022-Present> "/>
-          <RoadMapItem subtitle="Cybertech, Multiverso and Anima" subtext="Owner"/>
+          <RoadMapItem subtitle="QACS" subtext="React Developer | QA Tester | Project Manager <2022-Present> "/>
         </Items>
       </Container>
     </Section>
