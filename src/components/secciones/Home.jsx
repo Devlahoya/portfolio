@@ -36,7 +36,15 @@ const Section = styled.section`
   //width: 100vw;
   position: relative;
   background-color: ${(props) => props.theme.body};
+  width: 100%;
+height: 100vh;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+
 `;
+
+
 const Container = styled.div`
   width: 75%;
   min-height: 80vh;

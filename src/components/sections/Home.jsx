@@ -5,6 +5,8 @@ import { lazy, Suspense } from "react";
 import { Loading } from "../../components/Loading";
 import cveng from "../../assets/cveng.pdf";
 import VIDEODEV from "../../assets/home.mp4";
+
+import background from "../../assets/background2.png";
 //const TypeWriterText = lazy(() => import("../TypeWriterText"));
 //const CoverVideo= lazy(()=>import("../CoverVideo"))
 //<Round>import CoverVideo from './../CoverVideo';
@@ -13,7 +15,7 @@ import VIDEODEV from "../../assets/home.mp4";
 //</Round>
 export function Home() {
   return (
-    <Section id="home">
+    <Section id="home" style={{ backgroundImage: `url(${background})` }}>
       <Container>
       <Box>
         <Suspense fallback={<Loading />}>
@@ -35,6 +37,12 @@ const Section = styled.section`
   //width: 100vw;
   position: relative;
   background-color: ${(props) => props.theme.body};
+  width: 100%;
+height: 100vh;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+
 `;
 const Container = styled.div`
   width: 75%;
