@@ -17,7 +17,7 @@ export function Footer() {
 
       <Container>
         <Left>
-        <Logo Text="Devlahoya" Link="/"/>
+        <Logo Text="IBQ.HECTOR MTZ" Link="/ibq"/>
           <IconList>
             <a href="https://www.facebook.com/HectorMtzDeLaHoya" target="_blank">
             <IonIcon icon={logoFacebook} color="light"></IonIcon>
@@ -34,18 +34,17 @@ export function Footer() {
           </IconList>
         </Left>
         <MenuItems>
-          <Item onClick={() => scrollTo("home")}>Home</Item>
-          <Item onClick={() => scrollTo("about")}>About</Item>
-          <Item onClick={() => scrollTo("roadmap")}>RoadMap</Item>
-          <Item onClick={() => scrollTo("projects")}>Projects</Item>
-          <Item onClick={() => scrollTo("trusted")}>Trusted by</Item>
-          <Item onClick={() => scrollTo("faq")}>FAQ</Item>
+          <Item onClick={() => scrollTo("home")}>Inicio</Item>
+          <Item onClick={() => scrollTo("about")}>Sobre mi</Item>
+          <Item onClick={() => scrollTo("roadmap")}>Trayectoria</Item>
+          <Item onClick={() => scrollTo("trusted")}>Confían en mí</Item>
+          <Item onClick={() => scrollTo("faq")}>Preguntas y respuestas</Item>
         </MenuItems>
       </Container>
       <Bottom>
         <span>&copy; {new Date().getFullYear()}</span>
         <span>
-          Made with ❤️ by{" "}
+          Hecho con ❤️ por{" "}
           <a href="" tarjet="_blank">
             Devlahoya
           </a>

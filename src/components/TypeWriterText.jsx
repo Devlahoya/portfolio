@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Typewriter from "typewriter-effect";
 import { Button } from "./Button";
-import cv from "../assets/cv.pdf"
-export default function TypeWriterText() {
+import cveng from "../assets/cveng.pdf";
+export default function TypeWriterText(props) {
   return (
     <>
       <Title>
-        I'm Hector Martinez...
+        {props.intro}
         <Typewriter
           options={{
             autoStart: true,
@@ -15,25 +15,25 @@ export default function TypeWriterText() {
           onInit={(typewriter) => {
             typewriter
               .pauseFor(200)
-              .typeString(`<span class="text-1">Engineer</span>`)
+              .typeString(`<span class="text-1">${props.uno}</span>`)
               .pauseFor(1500)
               .deleteAll()
-              .typeString(`<span class="text-2">Developer</span>`)
+              .typeString(`<span class="text-2">${props.dos}</span>`)
               .pauseFor(1500)
               .deleteAll()
-              .typeString(`<span class="text-3">Manager</span>`)
+              .typeString(`<span class="text-3">${props.tres}</span>`)
               .pauseFor(1500)
               .deleteAll()
-              .typeString(`<span class="text-4">Human</span>`)
+              .typeString(`<span class="text-4">${props.cuatro}</span>`)
               .pauseFor(1500)
               .deleteAll()
               .start();              
           }}
         ></Typewriter>
       </Title>
-      <SubTitle>Download my CV ⬇️😎💙.</SubTitle>
+      <SubTitle>{props.descargar} ⬇️😎💙.</SubTitle>
       <ButtonContainer>
-        <Button text="Download" link={cv} > </Button>
+        <Button text={props.download} link={props.archivo} > </Button>
       </ButtonContainer>
     </>
   );

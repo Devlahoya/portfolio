@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import VIDEO from "../assets/home.mp4";
 
-export default function CoverVideo() {
+export default function CoverVideo(props) {
   return (<VideoContainer>
-    <video src={VIDEO} type="video/mp4" autoPlay muted loop/>
+    <video src={props.video} type="video/mp4" autoPlay muted loop/>
   </VideoContainer>);
 }
 const VideoContainer = styled.div`

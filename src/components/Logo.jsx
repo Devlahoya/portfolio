@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-export function Logo() {
+export function Logo(props) {
   return (<LogoText>
-<Link to="/">
-    Devlahoya.
+<Link to={props.Link}>
+    {props.Text}
 </Link>
   </LogoText>);
 }

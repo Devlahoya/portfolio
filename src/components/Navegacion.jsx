@@ -4,7 +4,7 @@ import { Dark } from "../styles/Themes";
 import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 
-export function Navegation() {
+export function Navegacion() {
   const [click, setClick] = useState(false);
   const scrollTo = (id) => {
     let element = document.getElementById(id);
@@ -22,21 +22,20 @@ export function Navegation() {
     <Section id="navegation">
       <NavBar >
         <ThemeProvider theme={Dark}>
-        <Logo Text="Devlahoya" Link="/"/>
+        <Logo Text="IBQ.HECTOR MTZ" Link="/ibq"/>
         </ThemeProvider>
         <HamburgerMenu
           click={click}
           onClick={() => setClick(!click)}
         ></HamburgerMenu>
         <Menu click={click}>
-          <MenuItem onClick={() => scrollTo("home")}> Home</MenuItem>
-          <MenuItem onClick={() => scrollTo("about")}> About</MenuItem>
-          <MenuItem onClick={() => scrollTo("roadmap")}> RoadMap</MenuItem>
-          <MenuItem onClick={() => scrollTo("projects")}> Projects</MenuItem>
-          <MenuItem onClick={() => scrollTo("trusted")}> Trusted by</MenuItem>
-          <MenuItem onClick={() => scrollTo("faq")}> FAQ</MenuItem>
-          <MenuItem onClick={() => scrollTo("contact")}> Contact</MenuItem>
-          <MenuItem><Link to="/ibq">Biochemical Engineer 🧬 </Link> </MenuItem>
+          <MenuItem onClick={() => scrollTo("home")}> Inicio</MenuItem>
+          <MenuItem onClick={() => scrollTo("about")}> Sobre mi</MenuItem>
+          <MenuItem onClick={() => scrollTo("roadmap")}> Trayectoria</MenuItem>
+          <MenuItem onClick={() => scrollTo("trusted")}> Confían en mí</MenuItem>
+          <MenuItem onClick={() => scrollTo("faq")}> Preguntas y respuestas</MenuItem>
+          <MenuItem onClick={() => scrollTo("contact")}> Contacto</MenuItem>
+          <MenuItem><Link to="/">Programador 💻🌎</Link> </MenuItem>
         </Menu>
       </NavBar>
     </Section>

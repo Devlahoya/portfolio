@@ -3,8 +3,8 @@ import TypeWriterText from "../TypeWriterText";
 import CoverVideo from "../CoverVideo";
 import { lazy, Suspense } from "react";
 import { Loading } from "../../components/Loading";
-import cveng from "../../assets/cveng.pdf";
-import VIDEODEV from "../../assets/home.mp4";
+import cvesp from "../../assets/cvesp.pdf";
+import VIDEOIBQ from "../../assets/home.mp4";
 //const TypeWriterText = lazy(() => import("../TypeWriterText"));
 //const CoverVideo= lazy(()=>import("../CoverVideo"))
 //<Round>import CoverVideo from './../CoverVideo';
@@ -17,12 +17,12 @@ export function Home() {
       <Container>
       <Box>
         <Suspense fallback={<Loading />}>
-        <CoverVideo video={VIDEODEV}/>
+        <CoverVideo video={VIDEOIBQ}/>
           </Suspense>
         </Box>
         <Box>
           <Suspense fallback={<Loading />}>
-            <TypeWriterText intro="I'm Hector Martinez" uno="Engineer" dos="Developer" tres="Manager" cuatro="Human" descargar="Download my CV!" download ="Download" archivo={cveng} />
+            <TypeWriterText intro="Soy Héctor Martínez" uno="Ingeniero" dos="Bioquímico" tres="Gerente" cuatro="Humano" descargar="Descarga mi CV!" download ="Descargar" archivo={cvesp} />
           </Suspense>
         </Box>
       </Container>
