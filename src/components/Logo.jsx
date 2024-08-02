@@ -16,7 +16,7 @@ const LogoText = styled.h1`
         transform:scale(1.1)
     }
     @media (max-width: 64em){
-        font-size: ${(props) =>props.theme.fontxxl};
+        font-size: ${(props) =>props.theme.fontxl};
     }
 
 `
