@@ -16,16 +16,16 @@ export default function TypeWriterText(props) {
             typewriter
               .pauseFor(200)
               .typeString(`<span class="text-1">${props.uno}</span>`)
-              .pauseFor(1500)
+              .pauseFor(1000)
               .deleteAll()
               .typeString(`<span class="text-2">${props.dos}</span>`)
-              .pauseFor(1500)
+              .pauseFor(1000)
               .deleteAll()
               .typeString(`<span class="text-3">${props.tres}</span>`)
-              .pauseFor(1500)
+              .pauseFor(1000)
               .deleteAll()
               .typeString(`<span class="text-4">${props.cuatro}</span>`)
-              .pauseFor(1500)
+              .pauseFor(1000)
               .deleteAll()
               .start();              
           }}

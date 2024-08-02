@@ -17,7 +17,7 @@ export function Footer() {
 
       <Container>
         <Left>
-        <Logo Text="IBQ.HECTOR MTZ" Link="/ibq"/>
+        <Logo Text="IBQ" Link="/ibq"/>
           <IconList>
             <a href="https://www.facebook.com/HectorMtzDeLaHoya" target="_blank">
             <IonIcon icon={logoFacebook} color="light"></IonIcon>

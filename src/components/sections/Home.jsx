@@ -22,7 +22,7 @@ export function Home() {
         </Box>
         <Box>
           <Suspense fallback={<Loading />}>
-            <TypeWriterText intro="I'm Hector Martinez" uno="Engineer" dos="Developer" tres="Manager" cuatro="Human" descargar="Download my CV!" download ="Download" archivo={cveng} />
+            <TypeWriterText intro="I'm Hector Martinez" uno="Engineer" dos="Developer" tres="Manager" cuatro="Tester" descargar="Download my CV!" download ="Download" archivo={cveng} />
           </Suspense>
         </Box>
       </Container>

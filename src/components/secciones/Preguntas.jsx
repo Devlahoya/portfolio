@@ -4,7 +4,7 @@ export function Preguntas() {
   
   return (
     <Section id="faq">
-      <Title>Preguntas y Respuestas</Title>
+      <Title>Preguntas</Title>
       <Container>
         <Box>
           <Accordion title="¿Cuál es mi experiencia?">
@@ -49,14 +49,16 @@ const Section = styled.section`
 `;
 const Title = styled.h1`
   font-size: ${(props) => props.theme.fontxxl};
-  text-transform: uppercase;
+  text-transform: capitalize;
+  background-color: ${(props) => props.theme.text};
   color: ${(props) => props.theme.body};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+  border-bottom: 2px solid ${(props) => props.theme.body};
 
-  margin: 1rem auto;
-  border-bottom: 2px solid ${(props) => props.theme.carouselColor};
-  width: fit-content;
-
-  @media (max-width: 48em) {
+  @media (max-width: 40em) {
     font-size: ${(props) => props.theme.fontxl};
   }
 `;

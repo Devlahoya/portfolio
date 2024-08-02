@@ -5,6 +5,8 @@ import { Dark } from "../../styles/Themes";
 import { lazy, Suspense } from "react";
 import { Loading } from "../Loading";
 import Carousel from './Carrusel2';
+import { IonIcon } from '@ionic/react';
+import { logoInstagram, logoLinkedin, logoTwitter, logoFacebook } from 'ionicons/icons';
 //const  Carousel  = lazy(() => import("../Carousel"));
 
 
@@ -23,7 +25,7 @@ export function MoreAbout() {
   return (
     <>    
     <Title>
-      Want to know more?
+      ¿Quieres conocerme más?
     </Title>
     <Section id="about">
       <Container>
@@ -34,23 +36,21 @@ export function MoreAbout() {
         </Box>
         <Box>
           <SubText>
-          When I'm not bringing websites to life, I dive into other passions that make my life as vibrant as my coding.
+          Cuando tengo tiempo libre me gusta dedicarme a mis pasatiempos o ingresos pasivos.
           </SubText>
-          <SubTextLight>
-          In my spare time, I run my own mezcal liquor and preserves bussiness (you can check it out <a className="text-blue-600" href="http://www.google.com" target="_blank"> here. </a>). There's nothing like the perfect blend of flavors, and I apply that same passion and attention to detail to my work as a developer. Creativity flows into every aspect of my life, whether it's experimenting with new recipes or solving code problems.
-          <br/>
-          <br/>
-          When I unplug from the keyboard, you'll find me immersed in the world of streaming and gaming. The thrill of real-time sharing and immersion in virtual worlds is my escape. It's like finding solutions to problems, but with a controller in hand.
-          <br/>
-          <br/>
-          Also, I love to cook. From planning a new feature in my code to planning the next dinner, it's all about creating something amazing.
-          <rr/>
-          <br/>
-          This portfolio is not just a sample of my work; it's an invitation to explore my digital universe and discover how my passion for technology intertwines with my love for creativity and good food.
+          <SubTextLight>Entre mis pasatiempos, disfruto especialmente de la elaboración de licores y conservas artesanales bajo la marca de mi familia, "Ánima". Este proceso me permite explorar la alquimia de los sabores y la tradición de las recetas caseras, aportando un toque personal a cada producto. Además, soy un apasionado del mundo del gaming y del ensamblaje de computadoras. Esta afición me ha permitido profundizar en el hardware y el software, optimizando equipos para obtener el máximo rendimiento en juegos y aplicaciones.
+
+Otra de mis grandes pasiones es la impresión 3D, un campo en el que he acumulado una vasta experiencia y conocimientos. Trabajo bajo la marca "CyberTech", donde diseño y creo objetos tridimensionales, desde prototipos funcionales hasta piezas decorativas. Esta actividad combina creatividad y tecnología, y me permite estar a la vanguardia de las innovaciones en fabricación digital. A través de estos pasatiempos, no solo satisfago mis intereses personales, sino que también contribuyo al legado familiar y a la evolución tecnológica.
           </SubTextLight>
+          <br/>
+          <SubText>
+          Puedes ver algunos de mis proyectos de impresión 3D en mi instagram <a href="https://www.instagram.com/delahoyagg/" target="_blank">
+            <u> Aqui</u> <IonIcon icon={logoInstagram} color="light"></IonIcon>
+            </a>
+          </SubText>
           <ButtonContainer  onClick={() => scrollTo("contact")}>
             <ThemeProvider theme={Dark}>
-              <Button text="Send me a message!"/> 
+              <Button text="!Enviame un mensaje!"/> 
             </ThemeProvider>
           </ButtonContainer>
         </Box>

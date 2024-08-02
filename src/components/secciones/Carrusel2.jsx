@@ -6,14 +6,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-cards";
 
-import multiverso from "../../assets/trusted/multiverso.png"
 import cybertech from "../../assets/trusted/cybertech.png"
+import gamer from "../../assets/trusted/gamer.png"
+import anima from "../../assets/trusted/anima.png"
 import Arrow from "../../assets/Arrow.svg";
 export default function Carousel() {
   return (
     <Container>
       <Swiper
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         modules={[EffectCards, Navigation, Pagination, Scrollbar, A11y,Autoplay]}
         navigation={true}
         pagination={{ type: "fraction" }}
@@ -21,16 +22,13 @@ export default function Carousel() {
         effect={"cards"}
       >
         <SwiperSlide>
-          <img width={500} height={400} src={multiverso} alt="Multiverso" />
+          <img width={500} height={400} src={anima} alt="Anima" />
         </SwiperSlide>
         <SwiperSlide>
           <img width={500} height={400} src={cybertech} alt="Cybertech" />
         </SwiperSlide>
         <SwiperSlide>
-          <img width={500} height={400} src={multiverso} alt="Anima" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img width={500} height={400} src={cybertech} alt="Delahoyagg" />
+          <img width={500} height={400} src={gamer} alt="Gaming" />
         </SwiperSlide>
       </Swiper>
     </Container>

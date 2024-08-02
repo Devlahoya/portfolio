@@ -10,11 +10,6 @@ import itd from "../../assets/about/itd.png"
 import cbtis from "../../assets/about/cbtis.png"
 import js from "../../assets/about/js.png"
 import python from "../../assets/about/phyton.png"
-import node from "../../assets/about/node.png"
-import express from "../../assets/about/express.png"
-import react from "../../assets/about/react.png"
-import wordpress from "../../assets/about/wordpress.png"
-import postgresql from "../../assets/about/postgresql.png"
 import brain from "../../assets/about/brain.png"
 import Arrow from "../../assets/Arrow.svg";
 export default function Carousel() {
@@ -39,21 +34,6 @@ export default function Carousel() {
         </SwiperSlide>
         <SwiperSlide>
           <img width={500} height={400} src={python} alt="python" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img width={500} height={400} src={node} alt="node" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img width={500} height={400} src={express} alt="express" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img width={500} height={400} src={react} alt="react" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img width={500} height={400} src={wordpress} alt="wordpress" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img width={500} height={400} src={postgresql} alt="postgresql" />
         </SwiperSlide>
         <SwiperSlide>
           <img width={500} height={400} src={brain} alt="brain" />

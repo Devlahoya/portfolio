@@ -16,8 +16,8 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul className="list-none pl-2">
-        <li>Programming Technician - CBTis #130</li>
-        <li>Biochemical Engineer - Instituto Tecnologico de Durango</li>
+        <li>Técnico en programacíon - CBTis #130</li>
+        <li>Ingeniería Bioquímica - Instituto Tecnológico de Durango</li>
       </ul>
     ),
   },
@@ -26,15 +26,14 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul className="list-none pl-2">
+        <li>HACCP</li>
+        <li>Elaboración de Licores y Conservas</li>
+        <li>Manejo de personal</li>
+        <li>Excel</li>
         <li>JavaScript</li>
         <li>Python</li>
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>React</li>
-        <li>WordPress</li>
-        <li>PostgreSQL</li>
+        <li>Java </li>
         <li>AI & Deep Learning</li>
-        <li>Testing</li>
       </ul>
     ),
   },
@@ -62,16 +61,16 @@ export function About() {
   };
 
   const [buttonClicked, setButtonClicked] = useState(false);
-  const [buttonText, setButtonText]= useState("Want to know more about me?")
+  const [buttonText, setButtonText]= useState("¿Quieres conocerme más?")
 
   const handleButtonClick = () => {
-    {buttonClicked ? setButtonClicked(false) & setButtonText("Want to know more about me?") : setButtonClicked(true) & setButtonText("Less about me")}
+    {buttonClicked ? setButtonClicked(false) & setButtonText("¿Quieres conocerme más?") : setButtonClicked(true) & setButtonText("Ver menos")}
 
   };
   return (
     <>
     <Title id="about">
-      About me
+      Acerca de mí
     </Title>
     <Section >
       <Container>
@@ -82,37 +81,37 @@ export function About() {
         </Box>
         <Box>
           <SubText>
-            I am a full stack web developer with a passion for creating
-            interactive and responsive web applications. I have experience
-            working with JavaScript, Python, React, Next.Js, Node.js, Express, PostgreSQL,
-            HTML, CSS, and Git.
+          Soy egresado de la carrera de Ingeniería Bioquímica en el Instituto Tecnológico de Durango y técnico en programación por parte del CBTis #130.
+          <br/>
+          <br/>
+          Cuento con amplia experiencia, la cual también es muy variada, en áreas de Alimentos, Desarrollo de dietas, Tecnología, Programación, Administración y creación de contenido
+          me gustan los desafíos por lo cual soy capaz de poder adaptarme a casi cualquier entorno, tengo disponibilidad de horario y cambio de residencia.
           </SubText>
-          <SubTextLight>
-            I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am a team player and
-            I am excited to work with others to create amazing applications.
-          </SubTextLight>
+          <br/>
+          <SubText>
+          Cuento con conocimiento avanzado en Hardware y Software, Aseguramiento de calidad, Sistema HACCP, Manejo de personal, Paquetería Office, control y uso de IA, lenguajes de programación como JavaScript, Java, Python, etc.          
+          </SubText>
           <Container >
           <TabButton
               selectTab={() => handleTabChange("education")}
               active={tab === "education"}
             >
               {" "}
-              Education{" "}
+              Educación{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
             >
               {" "}
-              Skills{" "}
+              Habilidades{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("certifications")}
               active={tab === "certifications"}
             >
               {" "}
-              Certifications{" "}
+              Certificaciones{" "}
             </TabButton>
           </Container>
           <SubUlLight>
