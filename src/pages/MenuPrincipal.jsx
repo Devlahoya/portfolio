@@ -1,7 +1,8 @@
-import { Navegation } from "../components/Navegation";
-import { Light, Dark } from "../styles/Themes";
+import { Light } from "../styles/Themes";
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
+import { LanguageProvider } from "../context/LanguageContext";
+import { Navegation } from "../components/Navegation";
 import { Home } from "../components/sections/Home";
 import { About } from "../components/sections/About";
 import { Roadmap } from "../components/sections/Roadmap";
@@ -10,29 +11,30 @@ import { Preguntas } from "../components/sections/Preguntas";
 import { Footer } from "../components/sections/Footer";
 import { ScrollToTop } from "../components/ScrollToTop";
 import EmailSection from "../components/sections/EmailSection";
-import {Banner} from "../components/Banner"
+import { Banner } from "../components/Banner";
 import ProjectsSection from "../components/projects/ProjectsSection";
 import CoursesSection from '../components/courses/CoursesSection';
 
 export function MenuPrincipal() {
   return (
-    <main>
-      <GlobalStyles />
+    <LanguageProvider>
       <ThemeProvider theme={Light}>
+        <GlobalStyles />
         <Navegation />
-        <Home/>
-        <About/>
-        <Roadmap/>
-        <ProjectsSection/>
-        <CoursesSection/>
-        <Showcase/>
-        <Preguntas/>
-        <Banner/>
-        <EmailSection/>
-        <Footer/>
-        <ScrollToTop/>
-
+        <main>
+          <Home />
+          <About />
+          <Roadmap />
+          <ProjectsSection />
+          <CoursesSection />
+          <Showcase />
+          <Preguntas />
+          <Banner />
+          <EmailSection />
+          <Footer />
+          <ScrollToTop />
+        </main>
       </ThemeProvider>
-    </main>
+    </LanguageProvider>
   );
 }

@@ -1,96 +1,66 @@
 import styled from "styled-components";
-import { Accordion } from "../Accordion";
+import { useState } from "react";
+import { useLanguage } from "../../context/LanguageContext";
+
+function FaqItem({ question, answer }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Item>
+      <Question onClick={() => setOpen(!open)}>
+        <QuestionText>{question}</QuestionText>
+        <Chevron open={open}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </Chevron>
+      </Question>
+      <Answer open={open}><AnswerInner>{answer}</AnswerInner></Answer>
+    </Item>
+  );
+}
+
 export function Preguntas() {
-  
+  const { tr } = useLanguage();
+  const faq = tr('faq');
+
   return (
     <Section id="faq">
-      <Title>FAQ</Title>
-      <Container>
-        <Box>
-          <Accordion title="Do i have any other work experience?">
-          <P>Sure, I was administrative manager of a construction company for several years, there was even a project where I had to manage more than 200 workers. </P>
-          </Accordion>
-          <Accordion title="Why did i decided to change careers?">
-          <P>I am a biochemical engineer by profession, I feel great passion for the food industry, however also throughout my life I have been surrounded by everything related to technology so it has also been my great passion, and I am sure that I can unite my two great passions somehow, dabbling in the tech industry is a challenge that I am sure I can face to achieve my goals.</P>
-          </Accordion>
-          <Accordion title="Am I only interested in the web development industry?">
-          <P>No, I am interested in any branch of programming and/or hardware related, I am always willing to learn something new. </P> 
-          </Accordion>
-        </Box>
-        <Box>
-          <Accordion title="What are my hobbies?">
-          <P>Among my main hobbies is the elaboration of mezcal liqueurs and artisanal preserves for my own brand and online store called "Anima", you can check it out <a className="text-blue-600" href="http://www.google.com" target="_blank"> here </a>. </P>
-          <br/>
-          <P>I also like everything related to PC Gaming and the assembly of computer equipment. </P>
-          </Accordion>
-          <Accordion title="Am I open to travel or change my place of residence?">
-          <P>You betcha! I'm ready to venture to new galaxies, boldly going where no one has gone before. Whether it's the scenic landscapes of Middle-earth or a galaxy far, far away, count me in for an epic journey. </P>
-          </Accordion>
-          <Accordion title="Is this question a placeholder?">
-          <P>Yes, it is </P>
-          </Accordion>
-        </Box>
-      </Container>
+      <Header>
+        <SectionTag>{faq.tag}</SectionTag>
+        <SectionTitle>{faq.title}</SectionTitle>
+        <SectionSub>{faq.subtitle}</SectionSub>
+      </Header>
+      <FaqList>
+        {(faq.items || []).map((item, i) => (
+          <FaqItem key={i} question={item.question} answer={item.answer} />
+        ))}
+      </FaqList>
     </Section>
   );
 }
+
 const Section = styled.section`
-
-  height: auto;
-  width: 100vw;
-  background-color: ${(props) => props.theme.text};
-  position: relative;
-  color: ${(props) => props.theme.body};
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  width: 100%; background-color: #13131f; padding: 6rem 0 7rem; position: relative;
+  &::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(124,58,237,0.3), transparent); }
 `;
-const Title = styled.h1`
-  font-size: ${(props) => props.theme.fontxxl};
-  text-transform: uppercase;
-  color: ${(props) => props.theme.body};
-
-  margin: 1rem auto;
-  border-bottom: 2px solid ${(props) => props.theme.carouselColor};
-  width: fit-content;
-
-  @media (max-width: 48em) {
-    font-size: ${(props) => props.theme.fontxl};
-  }
+const Header = styled.div`width: 88%; max-width: 800px; margin: 0 auto 3.5rem; display: flex; flex-direction: column; gap: 0.75rem;`;
+const SectionTag = styled.span`font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00d4ff;`;
+const SectionTitle = styled.h2`font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: #e2e8f0; line-height: 1.2;`;
+const SectionSub = styled.p`font-size: 0.95rem; color: rgba(226,232,240,0.45); font-family: 'Inter', sans-serif;`;
+const FaqList = styled.div`width: 88%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;`;
+const Item = styled.div`
+  background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; overflow: hidden;
+  transition: border-color 0.2s ease;
+  &:hover { border-color: rgba(0,212,255,0.18); }
 `;
-const Container = styled.div`
-  width: 75%;
-  margin: 2rem auto;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-
-  @media (max-width: 64em) {
-    width: 80%;
-  }
-  @media (max-width: 48em) {
-    width: 90%;
-    flex-direction: column;
-
-    & > *:last-child {
-      & > *:first-child {
-        margin-top: 0;
-      }
-    }
-  }
+const Question = styled.button`
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; gap: 1rem;
 `;
-const Box = styled.div`
-  width: 45%;
-  @media (max-width: 64em) {
-    align-self: center;
-  }
-  @media (max-width: 48em) {
-    width: 90%;
-  }
+const QuestionText = styled.span`font-size: 0.95rem; font-weight: 600; color: #e2e8f0; font-family: 'Space Grotesk', sans-serif;`;
+const Chevron = styled.span`
+  color: ${({ open }) => open ? "#00d4ff" : "rgba(226,232,240,0.4)"};
+  transform: ${({ open }) => open ? "rotate(180deg)" : "rotate(0)"}; transition: all 0.25s ease; flex-shrink: 0; display: flex; align-items: center;
 `;
-
-const P = styled.p `
-  color: ${(props) => props.theme.body};
-`;
+const Answer = styled.div`max-height: ${({ open }) => open ? "300px" : "0"}; overflow: hidden; transition: max-height 0.3s ease;`;
+const AnswerInner = styled.p`padding: 0 1.5rem 1.25rem; font-size: 0.88rem; color: rgba(226,232,240,0.55); line-height: 1.7; font-family: 'Inter', sans-serif;`;

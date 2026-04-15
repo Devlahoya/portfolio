@@ -1,103 +1,134 @@
 import styled from "styled-components";
 import Typewriter from "typewriter-effect";
-import { Button } from "./Button";
+import { useLanguage } from "../context/LanguageContext";
 import cveng from "../assets/cveng.pdf";
-export default function TypeWriterText(props) {
+
+export default function TypeWriterText() {
+  const { t, tr, lang } = useLanguage();
+  const home = tr('home');
+
+  const scrollToContact = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
-      <Title>
-        {props.intro}
+      <Greeting>{home.greeting}</Greeting>
+      <RoleWrapper>
+        <RolePrefix>{home.rolePrefix}</RolePrefix>
+        {/* key forces remount when language changes so typewriter restarts */}
         <Typewriter
-          options={{
-            autoStart: true,
-            loop: true,
-          }}
+          key={lang}
+          options={{ autoStart: true, loop: true }}
           onInit={(typewriter) => {
-            typewriter
-              .pauseFor(200)
-              .typeString(`<span class="text-1">${props.uno}</span>`)
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString(`<span class="text-2">${props.dos}</span>`)
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString(`<span class="text-3">${props.tres}</span>`)
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString(`<span class="text-4">${props.cuatro}</span>`)
-              .pauseFor(1000)
-              .deleteAll()
-              .start();              
+            const roles = home.roles || [];
+            roles.forEach((role, i) => {
+              typewriter
+                .typeString(`<span class="tw-role">${role}</span>`)
+                .pauseFor(1300)
+                .deleteAll();
+            });
+            typewriter.start();
           }}
-        ></Typewriter>
-      </Title>
-      <SubTitle>{props.descargar} ⬇️😎💙.</SubTitle>
-      <ButtonContainer>
-        <Button text={props.download} link={props.archivo} > </Button>
-      </ButtonContainer>
+        />
+      </RoleWrapper>
+      <Description>{home.description}</Description>
+      <ButtonRow>
+        <DownloadBtn href={cveng} target="_blank" download>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          {home.downloadCV}
+        </DownloadBtn>
+        <ContactBtn onClick={scrollToContact}>
+          {home.contactMe}
+        </ContactBtn>
+      </ButtonRow>
+
+      <style>{`
+        .tw-role {
+          background: linear-gradient(135deg, #00d4ff, #7c3aed);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 700;
+        }
+        .Typewriter__cursor { color: #00d4ff; }
+      `}</style>
     </>
   );
 }
-const Title = styled.h2`
-  font-size: ${(props) => props.theme.fontxxl};
-  text-transform: capitalize;
-  width: 80%;
-  color: ${(props) => props.theme.text};
-  align-self: flex-start;
-  transition: all 0.5s ease-in-out;
-  span{
-    text-transform: uppercase;
-    font-family: "Akaya Telivigala", cursive;
-  }
-  .text-1 {
-    color: #800040;
-  }
-  .text-2 {
-    color: blue;
-  }
-  .text-3 {
-    color: red;
-  }
-  .text-4 {
-    color: green;
-  }
-  .text-5 {
-    color: orange;
-  }
-  @media (max-width: 70em) {
-    font-size: ${(props) => props.theme.fontxl};
-  }
-  @media (max-width: 48em) {
-    align-self: center;
-    text-align: center;
-  }
-  @media (max-width: 40em) {
-    width: 90%;
-  }
+
+const Greeting = styled.h2`
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 500;
+  color: rgba(226,232,240,0.55);
+  letter-spacing: 0.04em;
 `;
-const SubTitle = styled.h3`
-  font-size: ${(props) => props.theme.fontlg};
-  color: ${(props) => `rgba(${props.theme.textRgba}, 0.6)`};
+
+const RoleWrapper = styled.div`
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1.15;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 4.5rem;
+  .Typewriter { display: inline; }
+`;
+
+const RolePrefix = styled.span`color: #e2e8f0;`;
+
+const Description = styled.p`
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  color: rgba(226,232,240,0.5);
+  line-height: 1.7;
+  max-width: 480px;
+  font-family: 'Inter', sans-serif;
+`;
+
+const ButtonRow = styled.div`
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+`;
+
+const DownloadBtn = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.75rem;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  color: #fff;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  width: 80%;
-  align-self: flex-start;
-  @media (max-width: 40em) {
-    font-size: ${(props) => props.theme.fontmd};
-  }
-  @media (max-width: 48em) {
-    align-self: center;
-    text-align: center;
-  }
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  &:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.25); }
 `;
-const ButtonContainer = styled.div`
-  width: 80%;
-  align-self: flex-start;
-  @media (max-width: 48em) {
-    align-self: center;
-    text-align: center;
-    button {
-      margin: 0 auto;
-    }
-  }
+
+const ContactBtn = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.12);
+  letter-spacing: 0.02em;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.25s ease;
+  &:hover { border-color: rgba(0,212,255,0.4); color: #00d4ff; background: rgba(0,212,255,0.06); transform: translateY(-2px); }
 `;

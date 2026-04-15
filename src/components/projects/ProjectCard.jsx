@@ -1,86 +1,124 @@
 import React from "react";
-import styled  from "styled-components";
+import styled from "styled-components";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 
-const ProjectCard = ({ title, description,tag, img, gitUrl, previewUrl }) => {
+const ProjectCard = ({ title, description, tag, img, gitUrl, previewUrl }) => {
   return (
-    <Section>
-      <ImgContainer
-        className="group"
-      >
-        <img src={img} />
-        <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
-          <a
-            href={gitUrl} 
-            target="_blank"
-            className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
-          </a>
-          <a
-            href={previewUrl}
-            target="_blank"
-            className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
-          </a>
-        </div>
+    <Card>
+      <ImgContainer className="group">
+        <img src={img} alt={title} />
+        <Overlay className="overlay">
+          {gitUrl && (
+            <IconLink href={gitUrl} target="_blank" rel="noopener noreferrer" aria-label="View code">
+              <CodeBracketIcon style={{ width: 22, height: 22 }} />
+            </IconLink>
+          )}
+          {previewUrl && (
+            <IconLink href={previewUrl} target="_blank" rel="noopener noreferrer" aria-label="Live preview">
+              <EyeIcon style={{ width: 22, height: 22 }} />
+            </IconLink>
+          )}
+        </Overlay>
       </ImgContainer>
-      <Box >
-        <h5 className="text-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE] text-sm">Tag: {tag}</p>
-        {/*
-        <br/>
-         <p className="text-[#ADB7BE] text-md">Project Description: {description}</p> */}
-      </Box>
-    </Section>
+      <CardBody>
+        <CardTitle>{title}</CardTitle>
+        {tag && <CardTag>{tag}</CardTag>}
+      </CardBody>
+    </Card>
   );
 };
-const Section = styled.section`
-  width: 90%;
-  margin: auto;
-  background-color: ${(props) => props.theme.text};
-  position: relative;
-  color: ${(props) => props.theme.body};
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
 
-const Box = styled.div`
-  width: 100%;
-  margin: 2rem auto;
-  align-self: center;
-  padding: 4%;
-  @media (max-width: 64em) {
-    width: 80%;
-  }
-  @media (max-width: 48em) {
-    width: 90%;
-    flex-direction: column;
-
-    & > *:last-child {
-      & > *:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-`;
-const ImgContainer = styled.div`
-  width: auto;
-  height: auto;
-  margin: 0 1rem;
-  background-color: ${(props) => props.theme.body};
-  border-radius: 20px;
-  position: relative;
-  cursor: pointer;
-
-`;
-
-const Img = styled.img`
-width: auto;
-height: auto;
-`;
 export default ProjectCard;
+
+const Card = styled.div`
+  background: rgba(17, 17, 24, 0.9);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  height: 100%;
+
+  &:hover {
+    border-color: rgba(0,212,255,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  }
+`;
+
+const ImgContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(13,13,20,0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+`;
+
+const IconLink = styled.a`
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(226,232,240,0.8);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #00d4ff;
+    color: #00d4ff;
+    background: rgba(0,212,255,0.1);
+  }
+`;
+
+const CardBody = styled.div`
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+`;
+
+const CardTitle = styled.h5`
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+`;
+
+const CardTag = styled.span`
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #00d4ff;
+  padding: 2px 8px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.18);
+  border-radius: 100px;
+  width: fit-content;
+`;

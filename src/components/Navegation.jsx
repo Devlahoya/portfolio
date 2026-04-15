@@ -1,154 +1,269 @@
-import { useState, useEffect } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import { Dark } from "../styles/Themes";
+import { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 import { Logo } from "./Logo";
-import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+import { LANGUAGES } from "../i18n/translations";
 
 export function Navegation() {
   const [click, setClick] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef(null);
+  const { t, lang, setLang } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   const scrollTo = (id) => {
-    let element = document.getElementById(id);
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
-    setClick(!click);
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+    setClick(false);
   };
 
+  const NAV_LINKS = [
+    { labelKey: 'nav.home', id: 'home' },
+    { labelKey: 'nav.about', id: 'about' },
+    { labelKey: 'nav.experience', id: 'roadmap' },
+    { labelKey: 'nav.projects', id: 'projects' },
+    { labelKey: 'nav.trustedBy', id: 'trusted' },
+    { labelKey: 'nav.faq', id: 'faq' },
+    { labelKey: 'nav.contact', id: 'contact' },
+  ];
 
+  const currentLang = LANGUAGES.find((l) => l.code === lang);
 
   return (
-    <Section id="navegation">
-      <NavBar >
-        <ThemeProvider theme={Dark}>
-        <Logo Text="Devlahoya" Link="/"/>
-        </ThemeProvider>
-        <HamburgerMenu
-          click={click}
-          onClick={() => setClick(!click)}
-        ></HamburgerMenu>
+    <Nav scrolled={scrolled} id="navegation">
+      <NavBar>
+        <Logo Text="Devlahoya" Link="/" />
+
+        <RightSide>
+          {/* Language Selector */}
+          <LangSelector ref={langRef}>
+            <LangBtn onClick={() => setLangOpen(!langOpen)} aria-label="Select language">
+              <span>{currentLang?.flag}</span>
+              <span>{currentLang?.label}</span>
+              <Chevron open={langOpen}>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </Chevron>
+            </LangBtn>
+            {langOpen && (
+              <LangDropdown>
+                {LANGUAGES.map((l) => (
+                  <LangOption
+                    key={l.code}
+                    active={l.code === lang}
+                    onClick={() => { setLang(l.code); setLangOpen(false); }}
+                  >
+                    <span>{l.flag}</span>
+                    <span>{l.full}</span>
+                  </LangOption>
+                ))}
+              </LangDropdown>
+            )}
+          </LangSelector>
+
+          {/* Hamburger */}
+          <HamburgerMenu click={click} onClick={() => setClick(!click)}>
+            <span /><span /><span />
+          </HamburgerMenu>
+        </RightSide>
+
         <Menu click={click}>
-          <MenuItem onClick={() => scrollTo("home")}> Home</MenuItem>
-          <MenuItem onClick={() => scrollTo("about")}> About</MenuItem>
-          <MenuItem onClick={() => scrollTo("roadmap")}> RoadMap</MenuItem>
-          <MenuItem onClick={() => scrollTo("projects")}> Projects</MenuItem>
-          <MenuItem onClick={() => scrollTo("trusted")}> Trusted by</MenuItem>
-          <MenuItem onClick={() => scrollTo("faq")}> FAQ</MenuItem>
-          <MenuItem onClick={() => scrollTo("contact")}> Contact</MenuItem>
-          <MenuItem><Link to="/ibq">Biochemical Engineer 🧬 </Link> </MenuItem>
+          {NAV_LINKS.map(({ labelKey, id }) => (
+            <MenuItem key={id} onClick={() => scrollTo(id)}>
+              {t(labelKey)}
+            </MenuItem>
+          ))}
         </Menu>
       </NavBar>
-    </Section>
+    </Nav>
   );
 }
 
-const Section = styled.section`
-  width: 100vw;
-  background-color: ${(props) => props.theme.body};
+const Nav = styled.nav`
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: ${({ scrolled }) => scrolled ? "rgba(19,19,31,0.9)" : "transparent"};
+  backdrop-filter: ${({ scrolled }) => scrolled ? "blur(16px)" : "none"};
+  border-bottom: ${({ scrolled }) => scrolled ? "1px solid rgba(255,255,255,0.07)" : "none"};
+  transition: all 0.3s ease;
 `;
-const LogoText = styled.h1`
-    font-family: 'Akaya Telivigala', cursive;
-    font-size:${(props) =>props.theme.fontxxxl};
-    color:${(props)=>props.theme.text};
-    transition: all 0.2s ease;
-    &:hover{
-        transform:scale(1.1)
-    }
-    @media (max-width: 64em){
-        font-size: ${(props) =>props.theme.fontxxl};
-    }
-`
-const NavBar = styled.nav`
+
+const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
+  width: 88%;
+  max-width: 1200px;
   height: ${(props) => props.theme.navHeight};
   margin: 0 auto;
 `;
+
+const RightSide = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+`;
+
 const Menu = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   list-style: none;
+  gap: 0.25rem;
+
   @media (max-width: 64em) {
     position: fixed;
     top: ${(props) => props.theme.navHeight};
-    left: 0;
-    right: 0;
-    bottom: 0;
+    left: 0; right: 0; bottom: 0;
     width: 100vw;
     z-index: 100;
-    background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.85)`};
-    backdrop-filter: blur(2px);
-    transform: ${(props) =>
-      props.click ? "translateY(0)" : "translateY(1000%)"};
-    transition: all 0.3s ease;
+    background: rgba(19, 19, 31, 0.97);
+    backdrop-filter: blur(20px);
+    transform: ${({ click }) => click ? "translateY(0)" : "translateY(-120%)"};
+    opacity: ${({ click }) => click ? "1" : "0"};
+    transition: transform 0.35s ease, opacity 0.35s ease;
     flex-direction: column;
     justify-content: center;
-    touch-action: none;
+    gap: 2rem;
   }
 `;
+
 const MenuItem = styled.li`
-  margin: 0 1rem;
-  color: ${(props) => props.theme.text};
+  padding: 0.5rem 0.85rem;
+  color: rgba(226,232,240,0.7);
   cursor: pointer;
-  font-size: ${(props) => props.theme.fontlg};
-  &::after {
-    content: " ";
-    display: block;
-    width: 0%;
-    height: 2px;
-    background: ${(props) => props.theme.text};
-    transition: width 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #00d4ff;
+    background: rgba(0,212,255,0.08);
   }
-  &:hover::after {
-    width: 100%;
-  }
+
   @media (max-width: 64em) {
-    margin: 1rem 0;
-    font-size: ${(props) => props.theme.fontmd};
-    &::after {
-      display: none;
-    }
+    font-size: 1.3rem;
+    padding: 0.5rem 2rem;
+    color: #e2e8f0;
   }
 `;
-const HamburgerMenu = styled.span`
-  width: ${(props) => (props.click ? "2rem" : "1.5rem")};
-  height: 2px;
-  background: ${(props) => props.theme.text};
+
+/* ── Language selector ── */
+const LangSelector = styled.div`
+  position: relative;
+`;
+
+const LangBtn = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: rgba(226,232,240,0.8);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.04em;
+  font-family: 'Space Grotesk', sans-serif;
+
+  &:hover {
+    border-color: rgba(0,212,255,0.35);
+    color: #00d4ff;
+    background: rgba(0,212,255,0.06);
+  }
+`;
+
+const Chevron = styled.span`
+  display: flex;
+  align-items: center;
+  transform: ${({ open }) => open ? "rotate(180deg)" : "rotate(0)"};
+  transition: transform 0.2s ease;
+  opacity: 0.5;
+`;
+
+const LangDropdown = styled.div`
   position: absolute;
-  top: 3rem;
-  right: 1px;
-  transform: ${(props) =>
-    props.click
-      ? "translateX(-50%) rotate(90deg)"
-      : "translateX(-50%) rotate(0)"};
+  top: calc(100% + 8px);
+  right: 0;
+  background: rgba(17,17,24,0.97);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 140px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+`;
+
+const LangOption = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: ${({ active }) => active ? "rgba(0,212,255,0.1)" : "transparent"};
+  border: none;
+  color: ${({ active }) => active ? "#00d4ff" : "rgba(226,232,240,0.7)"};
+  font-size: 0.85rem;
+  font-weight: ${({ active }) => active ? "600" : "400"};
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  font-family: 'Space Grotesk', sans-serif;
+
+  &:hover {
+    background: rgba(0,212,255,0.08);
+    color: #00d4ff;
+  }
+`;
+
+const HamburgerMenu = styled.button`
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  @media (max-width: 64em) {
-    display: flex;
-  }
-  &::after,
-  &::before {
-    content: " ";
-    width: ${(props) => (props.click ? "1rem" : "1.5rem")};
+  padding: 4px;
+
+  span {
+    display: block;
+    width: 22px;
     height: 2px;
-    right: ${(props) => (props.click ? "-2px" : "0")};
-    background: ${(props) => props.theme.text};
-    position: absolute;
+    background: #e2e8f0;
+    border-radius: 2px;
     transition: all 0.3s ease;
+
+    &:first-child { transform: ${({ click }) => click ? "translateY(7px) rotate(45deg)" : "none"}; }
+    &:nth-child(2) { opacity: ${({ click }) => click ? "0" : "1"}; }
+    &:last-child { transform: ${({ click }) => click ? "translateY(-7px) rotate(-45deg)" : "none"}; }
   }
-  &::after {
-    top: ${(props) => (props.click ? "0.3rem" : "0.5rem")};
-    transform: ${(props) => (props.click ? "rotate(-40deg)" : "rotate(0)")};
-  }
-  &::before {
-    bottom: ${(props) => (props.click ? "0.3rem" : "0.5rem")};
-    transform: ${(props) => (props.click ? "rotate(40deg)" : "rotate(0)")};
-  }
+
+  @media (max-width: 64em) { display: flex; }
 `;
