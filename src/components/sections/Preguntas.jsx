@@ -1,66 +1,68 @@
-import styled from "styled-components";
 import { useState } from "react";
+import styled from "styled-components";
 import { useLanguage } from "../../context/LanguageContext";
+import { Section, Container, SectionHeader } from "../ui/Section";
+import { Reveal } from "../ui/Reveal";
 
-function FaqItem({ question, answer }) {
-  const [open, setOpen] = useState(false);
+function FaqItem({ question, answer, index }) {
+  const [open, setOpen] = useState(index === 0);
   return (
-    <Item>
-      <Question onClick={() => setOpen(!open)}>
-        <QuestionText>{question}</QuestionText>
-        <Chevron open={open}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
+    <Item $open={open ? 1 : 0}>
+      <Question onClick={() => setOpen((v) => !v)} aria-expanded={open}>
+        <Num>{String(index + 1).padStart(2, "0")}</Num>
+        <QText>{question}</QText>
+        <Chevron $open={open ? 1 : 0}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9" /></svg>
         </Chevron>
       </Question>
-      <Answer open={open}><AnswerInner>{answer}</AnswerInner></Answer>
+      <Answer $open={open ? 1 : 0}><AnswerInner>{answer}</AnswerInner></Answer>
     </Item>
   );
 }
 
 export function Preguntas() {
   const { tr } = useLanguage();
-  const faq = tr('faq');
+  const faq = tr("faq");
 
   return (
     <Section id="faq">
-      <Header>
-        <SectionTag>{faq.tag}</SectionTag>
-        <SectionTitle>{faq.title}</SectionTitle>
-        <SectionSub>{faq.subtitle}</SectionSub>
-      </Header>
-      <FaqList>
-        {(faq.items || []).map((item, i) => (
-          <FaqItem key={i} question={item.question} answer={item.answer} />
-        ))}
-      </FaqList>
+      <Narrow>
+        <SectionHeader tag={faq.tag} title={faq.title} subtitle={faq.subtitle} tight />
+        <List>
+          {(faq.items || []).map((item, i) => (
+            <Reveal key={i} delay={i * 0.04}><FaqItem index={i} question={item.question} answer={item.answer} /></Reveal>
+          ))}
+        </List>
+      </Narrow>
     </Section>
   );
 }
 
-const Section = styled.section`
-  width: 100%; background-color: #13131f; padding: 6rem 0 7rem; position: relative;
-  &::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(124,58,237,0.3), transparent); }
-`;
-const Header = styled.div`width: 88%; max-width: 800px; margin: 0 auto 3.5rem; display: flex; flex-direction: column; gap: 0.75rem;`;
-const SectionTag = styled.span`font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00d4ff;`;
-const SectionTitle = styled.h2`font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: #e2e8f0; line-height: 1.2;`;
-const SectionSub = styled.p`font-size: 0.95rem; color: rgba(226,232,240,0.45); font-family: 'Inter', sans-serif;`;
-const FaqList = styled.div`width: 88%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;`;
+const Narrow = styled(Container)`max-width: 860px;`;
+const List = styled.div`display: flex; flex-direction: column; gap: 0.6rem;`;
 const Item = styled.div`
-  background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; overflow: hidden;
-  transition: border-color 0.2s ease;
-  &:hover { border-color: rgba(0,212,255,0.18); }
+  border-radius: 14px; overflow: hidden;
+  background: ${({ $open: open }) => (open ? "rgba(0,224,255,0.04)" : "var(--card)")};
+  border: 1px solid ${({ $open: open }) => (open ? "rgba(0,224,255,0.3)" : "var(--border)")};
+  transition: border-color 0.2s ease, background 0.2s ease;
+  &:hover { border-color: rgba(0,224,255,0.3); }
 `;
 const Question = styled.button`
-  width: 100%; display: flex; justify-content: space-between; align-items: center;
-  padding: 1.25rem 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; gap: 1rem;
+  width: 100%; display: flex; align-items: center; gap: 1rem; padding: 1.15rem 1.4rem;
+  background: transparent; border: none; cursor: pointer; text-align: left; color: inherit;
 `;
-const QuestionText = styled.span`font-size: 0.95rem; font-weight: 600; color: #e2e8f0; font-family: 'Space Grotesk', sans-serif;`;
+const Num = styled.span`font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); flex-shrink: 0;`;
+const QText = styled.span`flex: 1; font-size: 0.98rem; font-weight: 600; color: var(--text);`;
 const Chevron = styled.span`
-  color: ${({ open }) => open ? "#00d4ff" : "rgba(226,232,240,0.4)"};
-  transform: ${({ open }) => open ? "rotate(180deg)" : "rotate(0)"}; transition: all 0.25s ease; flex-shrink: 0; display: flex; align-items: center;
+  display: flex; align-items: center; flex-shrink: 0;
+  color: ${({ $open: open }) => (open ? "var(--cyan)" : "var(--text-3)")};
+  transform: rotate(${({ $open: open }) => (open ? "180deg" : "0")}); transition: all 0.25s ease;
 `;
-const Answer = styled.div`max-height: ${({ open }) => open ? "300px" : "0"}; overflow: hidden; transition: max-height 0.3s ease;`;
-const AnswerInner = styled.p`padding: 0 1.5rem 1.25rem; font-size: 0.88rem; color: rgba(226,232,240,0.55); line-height: 1.7; font-family: 'Inter', sans-serif;`;
+const Answer = styled.div`
+  display: grid; grid-template-rows: ${({ $open: open }) => (open ? "1fr" : "0fr")}; transition: grid-template-rows 0.3s ease;
+`;
+const AnswerInner = styled.p`
+  overflow: hidden; padding: 0 1.4rem 0 3.1rem;
+  font-family: var(--font-body); font-size: 0.9rem; line-height: 1.7; color: var(--text-2);
+  padding-bottom: 1.2rem;
+`;

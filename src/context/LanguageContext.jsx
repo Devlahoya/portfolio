@@ -1,40 +1,54 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 import { translations, detectBrowserLang, SUPPORTED_LANGS } from '../i18n/translations';
 
 const LanguageContext = createContext(null);
 
+const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
+
+/** Deep-merge `override` on top of `base`; arrays are replaced, not merged. */
+function deepMerge(base, override) {
+  if (!isObj(base) || !isObj(override)) return override === undefined ? base : override;
+  const out = { ...base };
+  for (const key of Object.keys(override)) {
+    out[key] = isObj(base[key]) && isObj(override[key]) ? deepMerge(base[key], override[key]) : override[key];
+  }
+  return out;
+}
+
+const merged = Object.fromEntries(
+  SUPPORTED_LANGS.map((code) => [code, code === 'en' ? translations.en : deepMerge(translations.en, translations[code])])
+);
+
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState(() => {
-    const saved = localStorage.getItem('portfolio_lang');
-    if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+    try {
+      const saved = localStorage.getItem('portfolio_lang');
+      if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+    } catch { /* storage unavailable */ }
     return detectBrowserLang();
   });
 
   const setLang = (code) => {
     if (!SUPPORTED_LANGS.includes(code)) return;
     setLangState(code);
-    localStorage.setItem('portfolio_lang', code);
+    try { localStorage.setItem('portfolio_lang', code); } catch { /* ignore */ }
   };
 
-  // dot-path accessor: t('nav.home')
-  const t = (path) => {
-    const keys = path.split('.');
-    let result = translations[lang];
-    for (const key of keys) {
-      result = result?.[key];
-      if (result === undefined) return path;
-    }
-    return result ?? path;
-  };
+  const value = useMemo(() => {
+    const dict = merged[lang] || merged.en;
+    const t = (path) => {
+      let result = dict;
+      for (const key of path.split('.')) {
+        result = result?.[key];
+        if (result === undefined) return path;
+      }
+      return result ?? path;
+    };
+    const tr = (section) => dict[section] ?? {};
+    return { lang, setLang, t, tr };
+  }, [lang]);
 
-  // direct section accessor: tr('about') returns translations[lang].about
-  const tr = (section) => translations[lang]?.[section] ?? {};
-
-  return (
-    <LanguageContext.Provider value={{ lang, setLang, t, tr }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {

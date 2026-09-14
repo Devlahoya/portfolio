@@ -18,8 +18,8 @@ export function Footer() {
   };
 
   const NAV_LINKS = [
-    { labelKey: 'nav.home', id: 'home' }, { labelKey: 'nav.about', id: 'about' },
-    { labelKey: 'nav.experience', id: 'roadmap' }, { labelKey: 'nav.projects', id: 'projects' },
+    { labelKey: 'nav.home', id: 'home' }, { labelKey: 'nav.research', id: 'research' }, { labelKey: 'nav.about', id: 'about' },
+    { labelKey: 'nav.experience', id: 'experience' }, { labelKey: 'nav.projects', id: 'projects' },
     { labelKey: 'nav.contact', id: 'contact' },
   ];
 

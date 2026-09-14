@@ -1,19 +1,21 @@
+import { ThemeProvider } from "styled-components";
 import { Light } from "../styles/Themes";
 import { GlobalStyles } from "../styles/GlobalStyles";
-import { ThemeProvider } from "styled-components";
 import { LanguageProvider } from "../context/LanguageContext";
 import { Navegation } from "../components/Navegation";
 import { Home } from "../components/sections/Home";
+import { Research } from "../components/sections/Research";
 import { About } from "../components/sections/About";
-import { Roadmap } from "../components/sections/Roadmap";
+import { Experience } from "../components/sections/Experience";
+import { Education } from "../components/sections/Education";
+import ProjectsSection from "../components/projects/ProjectsSection";
+import CoursesSection from "../components/courses/CoursesSection";
 import { Showcase } from "../components/sections/Showcase";
 import { Preguntas } from "../components/sections/Preguntas";
+import { Banner } from "../components/Banner";
+import EmailSection from "../components/sections/EmailSection";
 import { Footer } from "../components/sections/Footer";
 import { ScrollToTop } from "../components/ScrollToTop";
-import EmailSection from "../components/sections/EmailSection";
-import { Banner } from "../components/Banner";
-import ProjectsSection from "../components/projects/ProjectsSection";
-import CoursesSection from '../components/courses/CoursesSection';
 
 export function MenuPrincipal() {
   return (
@@ -23,8 +25,10 @@ export function MenuPrincipal() {
         <Navegation />
         <main>
           <Home />
+          <Research />
           <About />
-          <Roadmap />
+          <Experience />
+          <Education />
           <ProjectsSection />
           <CoursesSection />
           <Showcase />

@@ -1,173 +1,140 @@
-import React, { useTransition, useState } from "react";
 import styled from "styled-components";
-import TabButton from "./TabButton";
 import { useLanguage } from "../../context/LanguageContext";
+import { Section, Container, SectionHeader } from "../ui/Section";
+import { Reveal } from "../ui/Reveal";
+
+const GROUP_ICONS = ["</>", "⌘", "∑", "⚙", "◈", "☺"];
 
 export function About() {
-  const [tab, setTab] = useState("skills");
-  const [isPending, startTransition] = useTransition();
   const { tr } = useLanguage();
-  const about = tr('about');
-
-  const handleTabChange = (id) => startTransition(() => setTab(id));
-
-  const tabContent = {
-    skills: (
-      <SkillGrid>
-        {(about.skills || []).map((skill) => (
-          <SkillItem key={skill.name}>
-            <SkillHeader>
-              <SkillName>{skill.name}</SkillName>
-              <SkillPercent>{skill.level}%</SkillPercent>
-            </SkillHeader>
-            <SkillBar><SkillFill style={{ width: `${skill.level}%` }} /></SkillBar>
-          </SkillItem>
-        ))}
-      </SkillGrid>
-    ),
-    education: (
-      <EduList>
-        {(about.education || []).map((edu, i) => (
-          <EduItem key={i}>
-            <EduYear>{edu.period}</EduYear>
-            <EduTitle>{edu.title}</EduTitle>
-            <EduPlace>{edu.place}</EduPlace>
-          </EduItem>
-        ))}
-      </EduList>
-    ),
-    certifications: (
-      <CertList>
-        {(about.certs || []).map((cert, i) => (
-          <CertItem key={i}>
-            <CertIcon>{cert.icon}</CertIcon>
-            <CertInfo>
-              <CertName>{cert.name}</CertName>
-              {cert.link && <CertLink href={cert.link} target="_blank">View certificate →</CertLink>}
-            </CertInfo>
-          </CertItem>
-        ))}
-      </CertList>
-    ),
-  };
-
-  const tabs = about.tabs || { skills: 'Skills', education: 'Education', certifications: 'Certifications' };
+  const a = tr("about");
 
   return (
     <Section id="about">
-      <SectionHeader>
-        <SectionTag>{about.tag}</SectionTag>
-        <SectionTitle>{about.title}</SectionTitle>
-      </SectionHeader>
-
       <Container>
-        <StatsColumn>
-          <StatCard>
-            <StatNumber className="gradient-text">5+</StatNumber>
-            <StatLabel>{about.yearsIT}</StatLabel>
-          </StatCard>
-          <StatCard>
-            <StatNumber className="gradient-text">30+</StatNumber>
-            <StatLabel>{about.projects}</StatLabel>
-          </StatCard>
-          <StatCard>
-            <StatNumber className="gradient-text">C2</StatNumber>
-            <StatLabel>{about.english}</StatLabel>
-          </StatCard>
-          <StatCard>
-            <StatNumber className="gradient-text">8+</StatNumber>
-            <StatLabel>{about.companies}</StatLabel>
-          </StatCard>
-          <BioCard>
-            <BioText>{about.bio1}</BioText>
-            <BioText>
-              {about.bio2?.split(about.highlight || '___')[0]}
-              {about.highlight && <Highlight>{about.highlight}</Highlight>}
-              {about.bio2?.split(about.highlight || '___')[1]}
-            </BioText>
-          </BioCard>
-        </StatsColumn>
+        <SectionHeader tag={a.tag} title={a.title} />
 
-        <TabsColumn>
-          <TabRow>
-            {['skills', 'education', 'certifications'].map((id) => (
-              <TabButton key={id} selectTab={() => handleTabChange(id)} active={tab === id}>
-                {tabs[id]}
-              </TabButton>
-            ))}
-          </TabRow>
-          <TabContent>{tabContent[tab]}</TabContent>
-        </TabsColumn>
+        <Layout>
+          <Reveal>
+            <BioCol>
+              <BioCard>
+                <Quote>“</Quote>
+                <BioText>{a.bio1}</BioText>
+                <BioText>{a.bio2}</BioText>
+                <BioText $strong>{a.bio3}</BioText>
+              </BioCard>
+
+              <LangCard>
+                <SmallTitle>{a.languagesTitle}</SmallTitle>
+                {(a.languages || []).map((l) => (
+                  <LangRow key={l.name}>
+                    <span>{l.name}</span>
+                    <LangLevel>{l.level}</LangLevel>
+                  </LangRow>
+                ))}
+              </LangCard>
+
+              <OpenTo>
+                <Live />
+                {a.openTo}
+              </OpenTo>
+            </BioCol>
+          </Reveal>
+
+          <SkillsCol>
+            <Reveal delay={0.05}><SmallTitle as="h3">{a.skillsTitle}</SmallTitle></Reveal>
+            <SkillGrid>
+              {(a.skillGroups || []).map((g, i) => (
+                <Reveal key={g.title} delay={0.06 + i * 0.05}>
+                  <SkillCard>
+                    <SkillHead>
+                      <SkillIcon>{GROUP_ICONS[i % GROUP_ICONS.length]}</SkillIcon>
+                      <SkillTitle>{g.title}</SkillTitle>
+                    </SkillHead>
+                    <SkillChips>
+                      {(g.items || []).map((s) => <SkillChip key={s}>{s}</SkillChip>)}
+                    </SkillChips>
+                  </SkillCard>
+                </Reveal>
+              ))}
+            </SkillGrid>
+          </SkillsCol>
+        </Layout>
       </Container>
     </Section>
   );
 }
 
-const Section = styled.section`
-  width: 100%; background-color: #13131f; padding: 6rem 0 5rem; position: relative;
-`;
-const SectionHeader = styled.div`
-  width: 88%; max-width: 1200px; margin: 0 auto 4rem;
-  display: flex; flex-direction: column; gap: 0.75rem;
-`;
-const SectionTag = styled.span`
-  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00d4ff;
-`;
-const SectionTitle = styled.h2`
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: #e2e8f0; line-height: 1.2;
-  white-space: pre-line;
-`;
-const Container = styled.div`
-  width: 88%; max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;
+const Layout = styled.div`
+  display: grid; grid-template-columns: 0.9fr 1.35fr; gap: 2rem; align-items: start;
   @media (max-width: 64em) { grid-template-columns: 1fr; }
 `;
-const StatsColumn = styled.div`
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-content: start;
-`;
-const StatCard = styled.div`
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 4px;
-  transition: border-color 0.2s ease;
-  &:hover { border-color: rgba(0,212,255,0.2); }
-`;
-const StatNumber = styled.span`font-size: 2rem; font-weight: 700; line-height: 1;`;
-const StatLabel = styled.span`font-size: 0.78rem; color: rgba(226,232,240,0.45); font-weight: 500;`;
+
+const BioCol = styled.div`display: flex; flex-direction: column; gap: 1rem;`;
+
 const BioCard = styled.div`
-  grid-column: 1 / -1; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;
+  position: relative; padding: 2rem; border-radius: 20px;
+  background: linear-gradient(160deg, rgba(0,224,255,0.07), rgba(139,92,246,0.05));
+  border: 1px solid rgba(0,224,255,0.18);
+  display: flex; flex-direction: column; gap: 1rem;
+`;
+const Quote = styled.span`
+  position: absolute; top: 0.4rem; right: 1.2rem; font-size: 5rem; line-height: 1; font-weight: 800;
+  color: rgba(0,224,255,0.12); pointer-events: none;
 `;
 const BioText = styled.p`
-  font-size: 0.9rem; color: rgba(226,232,240,0.6); line-height: 1.7; font-family: 'Inter', sans-serif;
+  font-family: var(--font-body); font-size: 0.95rem; line-height: 1.75;
+  color: ${({ $strong: strong }) => (strong ? "var(--text)" : "var(--text-2)")};
+  font-weight: ${({ $strong: strong }) => (strong ? 500 : 400)};
 `;
-const Highlight = styled.span`color: #00d4ff; font-weight: 600;`;
-const TabsColumn = styled.div`display: flex; flex-direction: column; gap: 1.5rem;`;
-const TabRow = styled.div`display: flex; gap: 0.5rem; flex-wrap: wrap;`;
-const TabContent = styled.div`
-  background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 16px; padding: 1.75rem; min-height: 280px;
+
+const LangCard = styled.div`
+  padding: 1.25rem 1.5rem; border-radius: 16px;
+  background: var(--card); border: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 0.6rem;
 `;
-const SkillGrid = styled.div`display: flex; flex-direction: column; gap: 1rem;`;
-const SkillItem = styled.div`display: flex; flex-direction: column; gap: 6px;`;
-const SkillHeader = styled.div`display: flex; justify-content: space-between;`;
-const SkillName = styled.span`font-size: 0.85rem; font-weight: 500; color: #e2e8f0;`;
-const SkillPercent = styled.span`font-size: 0.78rem; color: rgba(226,232,240,0.4); font-family: 'JetBrains Mono', monospace;`;
-const SkillBar = styled.div`width: 100%; height: 4px; background: rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden;`;
-const SkillFill = styled.div`height: 100%; background: linear-gradient(90deg, #00d4ff, #7c3aed); border-radius: 4px;`;
-const EduList = styled.div`display: flex; flex-direction: column; gap: 1.25rem;`;
-const EduItem = styled.div`
-  display: flex; flex-direction: column; gap: 3px; padding-left: 1rem;
-  border-left: 2px solid rgba(0,212,255,0.3);
+const SmallTitle = styled.span`
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3);
+  margin-bottom: 0.2rem; display: block;
 `;
-const EduYear = styled.span`font-size: 0.72rem; color: #00d4ff; font-family: 'JetBrains Mono', monospace; font-weight: 500;`;
-const EduTitle = styled.span`font-size: 0.95rem; font-weight: 600; color: #e2e8f0;`;
-const EduPlace = styled.span`font-size: 0.82rem; color: rgba(226,232,240,0.45);`;
-const CertList = styled.div`display: flex; flex-direction: column; gap: 1rem;`;
-const CertItem = styled.div`display: flex; align-items: flex-start; gap: 12px;`;
-const CertIcon = styled.span`font-size: 1.1rem; margin-top: 1px;`;
-const CertInfo = styled.div`display: flex; flex-direction: column; gap: 2px;`;
-const CertName = styled.span`font-size: 0.88rem; color: #e2e8f0; font-weight: 500;`;
-const CertLink = styled.a`
-  font-size: 0.78rem; color: #00d4ff;
-  &:hover { text-decoration: underline; opacity: 0.8; }
+const LangRow = styled.div`
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-weight: 600; font-size: 0.92rem; color: var(--text);
+`;
+const LangLevel = styled.span`font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-align: right;`;
+
+const OpenTo = styled.div`
+  display: inline-flex; align-items: center; gap: 10px; width: fit-content;
+  padding: 0.6rem 1rem; border-radius: 100px;
+  background: rgba(126,231,135,0.08); border: 1px solid rgba(126,231,135,0.3);
+  font-size: 0.82rem; font-weight: 600; color: #9be8a3;
+`;
+const Live = styled.span`
+  width: 8px; height: 8px; border-radius: 50%; background: #7ee787; box-shadow: 0 0 0 4px rgba(126,231,135,0.18);
+`;
+
+const SkillsCol = styled.div`display: flex; flex-direction: column; gap: 0.75rem;`;
+const SkillGrid = styled.div`
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+  @media (max-width: 40em) { grid-template-columns: 1fr; }
+`;
+const SkillCard = styled.div`
+  height: 100%; padding: 1.25rem; border-radius: 16px;
+  background: var(--card); border: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 0.9rem;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  &:hover { border-color: rgba(0,224,255,0.35); transform: translateY(-3px); background: rgba(0,224,255,0.035); }
+`;
+const SkillHead = styled.div`display: flex; align-items: center; gap: 10px;`;
+const SkillIcon = styled.span`
+  width: 30px; height: 30px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #06060b; background: var(--gradient);
+`;
+const SkillTitle = styled.h4`font-size: 0.95rem; font-weight: 700; color: var(--text);`;
+const SkillChips = styled.div`display: flex; flex-wrap: wrap; gap: 6px;`;
+const SkillChip = styled.span`
+  padding: 5px 11px; border-radius: 8px; font-size: 0.78rem; font-weight: 500;
+  color: var(--text-2); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.15s ease;
+  ${SkillCard}:hover & { color: var(--text); }
 `;
